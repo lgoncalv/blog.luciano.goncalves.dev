@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  private BITBUCKET_LOGO = require("./assets/BitbucketLogo.png");
+  public BITBUCKET_LOGO = require("./assets/BitbucketLogo.png");
   constructor() { }
 
   ngOnInit() {
