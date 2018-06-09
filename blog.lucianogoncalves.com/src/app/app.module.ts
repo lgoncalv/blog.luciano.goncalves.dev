@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
-import { MatToolbarModule, MatDividerModule } from "@angular/material";
+import { MatToolbarModule, MatDividerModule, MatButtonModule, MatIconModule } from "@angular/material";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppComponent } from "./app.component";
@@ -13,6 +13,8 @@ import { PostListComponent } from './post/post-list.component';
 import { PostService } from './post.service';
 import { HttpClientModule } from "@angular/common/http";
 
+import { RouteRoutingModule } from './route/route-routing.module';
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent, PostComponent, PostListComponent],
   imports: [
@@ -20,8 +22,11 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatDividerModule,
+    MatIconModule,
+    MatButtonModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    RouteRoutingModule
   ],
   providers: [ PostService ],
   bootstrap: [AppComponent]
