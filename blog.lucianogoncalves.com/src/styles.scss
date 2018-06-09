@@ -1,5 +1,6 @@
 @import '~@angular/material/theming';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 $custom-typography: mat-typography-config(
   $font-family: 'monospace, sans-serif'
