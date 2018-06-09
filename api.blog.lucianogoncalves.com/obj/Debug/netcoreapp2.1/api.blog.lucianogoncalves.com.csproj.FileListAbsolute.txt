@@ -1,0 +1,14 @@
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/bin/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.deps.json
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/bin/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.runtimeconfig.json
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/bin/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.runtimeconfig.dev.json
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/bin/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.dll
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/bin/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.pdb
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.csprojAssemblyReference.cache
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.csproj.CoreCompileInputs.cache
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.RazorAssemblyInfo.cache
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.RazorAssemblyInfo.cs
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.AssemblyInfoInputs.cache
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.AssemblyInfo.cs
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.RazorTargetAssemblyInfo.cache
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.dll
+/Users/luciano/development/lucianogoncalves/api.blog.lucianogoncalves.com/obj/Debug/netcoreapp2.1/api.blog.lucianogoncalves.com.pdb
