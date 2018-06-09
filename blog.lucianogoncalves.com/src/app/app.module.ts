@@ -14,9 +14,10 @@ import { PostService } from './post.service';
 import { HttpClientModule } from "@angular/common/http";
 
 import { RouteRoutingModule } from './route/route-routing.module';
+import { PostEditComponent } from './post/post-edit.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, PostComponent, PostListComponent],
+  declarations: [AppComponent, HeaderComponent, PostComponent, PostListComponent, PostEditComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
