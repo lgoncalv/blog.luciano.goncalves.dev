@@ -7,6 +7,7 @@ using lg.blog.api.entities;
 using lg.blog.api.models;
 using lg.blog.api.repositories;
 using lg.blog.api.services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace lg.blog.api
 {
@@ -38,9 +40,23 @@ namespace lg.blog.api
 
             services.AddMemoryCache();
             services.AddAutoMapper();
-            services.AddCors(config => {
+            services.AddCors(config =>
+            {
                 config.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://securetoken.google.com/lucianogoncalves-blog";
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = "https://securetoken.google.com/lucianogoncalves-blog",
+                        ValidateAudience = true,
+                        ValidAudience = "lucianogoncalves-blog",
+                        ValidateLifetime = true
+                    };
+                });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -58,6 +74,7 @@ namespace lg.blog.api
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IPost } from './post';
 import { PostService } from '../post.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-post-list',
@@ -10,7 +11,10 @@ import { PostService } from '../post.service';
 export class PostListComponent implements OnInit {
   posts: IPost[];
   
-  constructor(private _postService: PostService) { }
+  constructor(
+    public authService: AuthService,
+    private _postService: PostService
+  ) { }
 
   ngOnInit() {
     this._postService.getPosts().subscribe(posts=>{

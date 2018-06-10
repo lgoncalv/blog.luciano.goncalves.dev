@@ -1,8 +1,15 @@
 <mat-toolbar color="primary" class="mat-elevation-z6">
     <div fxLayoutAlign="space-between center" class="nav-header">
         <a [routerLink]="['/']">Luciano's blog</a>
-        <a href="https://bitbucket.org/lgoncalv/lucianogoncalves" target="_blank">
-            <img [src]="BITBUCKET_LOGO">
-        </a>
+        <div>
+            <div *ngIf="!(authService.user$ | async)?.uid">
+                <button mat-button [routerLink]="['/admin/login']">Login</button>
+                <a href="https://bitbucket.org/lgoncalv/lucianogoncalves" target="_blank">
+                    <img [src]="BITBUCKET_LOGO">
+                </a>
+            </div>
+            <button mat-button *ngIf="(authService.user$ | async)?.uid" (click)="authService.logout()">Logout</button>
+        </div>
+        
     </div>
 </mat-toolbar>
