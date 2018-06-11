@@ -77,3 +77,9 @@ nupkg/
 *.user
 *.userosscache
 *.sln.docstates
+
+
+# ignore appsettings configuration files
+**/appsettings.development.json
+**/appsettings.staging.json
+**/appsettings.production.json
