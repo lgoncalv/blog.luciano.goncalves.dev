@@ -28,8 +28,9 @@ export class AuthService {
   }
 
   logout() {
-    this._afAuth.auth.signOut();
-    localStorage.removeItem(environment.constants.jwtTokenKey);
-    this._router.navigate([""]);
+    this._afAuth.auth.signOut().then(_=> {
+      localStorage.removeItem(environment.constants.jwtTokenKey);
+      this._router.navigate([""]);
+    });
   }
 }
