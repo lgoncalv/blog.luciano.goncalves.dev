@@ -44,6 +44,7 @@ namespace lg.blog.api
             {
                 config.AddPolicy("AllowAll", builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
+            
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -57,6 +58,7 @@ namespace lg.blog.api
                         ValidateLifetime = true
                     };
                 });
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
