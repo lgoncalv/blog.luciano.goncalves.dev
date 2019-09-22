@@ -1,0 +1,9 @@
+<article *ngIf="post">
+    <section class="post-header">
+        <h2 itemprop="name headline">{{post.title}}</h2>
+        <time [attr.datetime]="post.createdOn" itemprop="datePublished">{{post.createdOn | date}}</time>
+    </section>
+    <section class="post-content">
+        <div [innerHtml]="post.content"></div>
+    </section>
+</article>

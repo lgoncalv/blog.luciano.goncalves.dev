@@ -1,0 +1,11 @@
+<article>
+    <section class="post-header">
+        <h2 itemprop="name headline">
+            <a [routerLink]="postUrl">{{post.title}}</a>
+        </h2>
+        <time [attr.datetime]="post.createdOn" itemprop="datePublished">{{post.createdOn | date: 'fullDate'}}</time>
+    </section>
+    <section class="post-content">
+        <markdown [data]="post.summary"></markdown>
+    </section>
+</article>
