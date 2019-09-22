@@ -4,6 +4,6 @@
         <time [attr.datetime]="post.createdOn" itemprop="datePublished">{{post.createdOn | date}}</time>
     </section>
     <section class="post-content">
-        <div [innerHtml]="post.content"></div>
+        <markdown [data]="post.content"></markdown>
     </section>
 </article>
