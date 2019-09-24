@@ -10,17 +10,17 @@ import { tap } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class PostService {
-    private apiUrl = environment.api.url;
+    private apiUrl = `${environment.api.url}/api/v1`;
 
     constructor(private http: HttpClient) {
     }
 
     getPostSummaries(): Observable<PostSummary[]> {
-        return this.http.get<PostSummary[]>(`${this.apiUrl}/api/postSummaries`);
+        return this.http.get<PostSummary[]>(`${this.apiUrl}/posts`);
     }
 
-    getPost(permalink: string): Observable<Post> {
-        return this.http.get<Post>(`${this.apiUrl}/api/posts?permalink=${permalink}`)
+    getPost(slug: string): Observable<Post> {
+        return this.http.get<Post>(`${this.apiUrl}/posts/slug/${slug}`)
             .pipe(tap( post => console.log(post)));
     }
 }

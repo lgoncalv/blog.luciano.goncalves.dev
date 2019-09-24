@@ -39,7 +39,7 @@ import { MarkdownModule } from 'ngx-markdown';
     MatToolbarModule,
     FlexLayoutModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryPostService, { delay: 100 }),
+    //HttpClientInMemoryWebApiModule.forRoot(InMemoryPostService, { delay: 100 }),
     AppRoutingModule,
     MarkdownModule.forRoot()
   ],

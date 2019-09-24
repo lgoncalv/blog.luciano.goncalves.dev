@@ -18,7 +18,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(this.activatedRoute.params.subscribe(params => {
-      this.post$ = this.postService.getPost(params.permalink);
+      this.post$ = this.postService.getPost(params.slug);
     }, error => {
       console.log(`Error: ${error}`);
     }));

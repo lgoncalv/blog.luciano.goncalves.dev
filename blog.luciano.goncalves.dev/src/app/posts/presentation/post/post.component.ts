@@ -6,19 +6,19 @@ import { Post } from '../../post';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss']
 })
-export class PostComponent implements OnInit, OnChanges {
-  @Input() selectedPost: Post;
-  post: Post;
+export class PostComponent implements OnInit {
+  @Input() post: Post;
+  // post: Post;
   
   constructor() { }
 
   ngOnInit() {
   }
 
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-    if (changes.selectedPost && changes.selectedPost.currentValue) {
-      this.post = changes.selectedPost.currentValue[0];
-    }
-  }
+  // ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+  //   if (changes.selectedPost && changes.selectedPost.currentValue) {
+  //     this.post = changes.selectedPost.currentValue[;
+  //   }
+  // }
 
 }

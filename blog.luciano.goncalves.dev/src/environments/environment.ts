@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: {
-    url: 'https://localhost'
+    url: 'https://us-central1-lucianogoncalves-blog.cloudfunctions.net'
   },
   firebaseConfig: {
     apiKey: "AIzaSyCOUfR6ClMx0ZmeV1KI_sv4NsyvEuDMI2w",
