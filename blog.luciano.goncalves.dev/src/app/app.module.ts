@@ -20,6 +20,7 @@ import { HttpErrorInterceptorProvider } from './404.interceptor';
 import { MarkdownModule } from 'ngx-markdown';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PostSummaryComponent,
     PostPageComponent,
     LoginComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
