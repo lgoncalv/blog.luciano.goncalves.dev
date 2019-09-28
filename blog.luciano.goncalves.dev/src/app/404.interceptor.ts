@@ -15,7 +15,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                 console.group('error:');
                 console.group(error);
                 if (error instanceof HttpErrorResponse && error.status == 404) {
-                    this.router.navigateByUrl('/not-found', {replaceUrl: true});
+                    this.router.navigateByUrl('/not-found', {skipLocationChange: true});
                     return EMPTY;
                 }
                 else {

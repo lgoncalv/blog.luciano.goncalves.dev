@@ -16,7 +16,7 @@ import { PostListComponent } from './posts/presentation/post-list/post-list.comp
 import { PostComponent } from './posts/presentation/post/post.component';
 import { PostSummaryComponent } from './posts/presentation/post-summary/post-summary.component';
 import { PostPageComponent } from './posts/container/post-page/post-page.component';
-import { HttpErrorInterceptorProvider } from './404.inerceptor';
+import { HttpErrorInterceptorProvider } from './404.interceptor';
 import { MarkdownModule } from 'ngx-markdown';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
