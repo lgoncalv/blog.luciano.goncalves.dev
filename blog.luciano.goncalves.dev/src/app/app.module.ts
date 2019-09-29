@@ -20,7 +20,9 @@ import { HttpErrorInterceptorProvider } from './404.interceptor';
 import { MarkdownModule } from 'ngx-markdown';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PostEditPageComponent } from './posts/container/post-edit-page/post-edit-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { WildcardComponent } from './wildcard/wildcard.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PostSummaryComponent,
     PostPageComponent,
     LoginComponent,
+    PostEditPageComponent,
     NotFoundComponent,
+    WildcardComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +55,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     MarkdownModule.forRoot()
   ],
-  providers: [HttpErrorInterceptorProvider],
+  providers: [
+    HttpErrorInterceptorProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
