@@ -29,9 +29,10 @@ export class AuthService {
       });
   }
 
-  logout() {
+  logout(next: ()=> void) {
     this._afAuth.auth.signOut().then(_ => {
       localStorage.removeItem(environment.constants.jwtTokenKey);
+      next();
     });
   }
 }

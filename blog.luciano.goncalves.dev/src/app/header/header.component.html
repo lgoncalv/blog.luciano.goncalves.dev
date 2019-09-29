@@ -3,12 +3,12 @@
         <div fxLayoutAlign="space-between center" class="nav-header">
             <a [routerLink]="['/']">Luciano's blog</a>
             <div>
-                <a *ngIf="!(authService.user$ | async)?.uid" href="https://bitbucket.org/lgoncalv/lucianogoncalves"
+                <a *ngIf="!(user | async)?.uid" href="https://bitbucket.org/lgoncalv/lucianogoncalves"
                     target="_blank">
                     <img [src]="BITBUCKET_LOGO">
                 </a>
                 <button mat-button *ngIf="(authService.user$ | async)?.uid"
-                    (click)="authService.logout()">Logout</button>
+                    (click)="logout()">Logout</button>
             </div>
         </div>
     </mat-toolbar>

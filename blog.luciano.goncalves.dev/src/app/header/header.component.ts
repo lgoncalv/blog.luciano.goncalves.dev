@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'lgblog-header',
@@ -8,8 +10,19 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HeaderComponent implements OnInit {
   public BITBUCKET_LOGO = require("./assets/BitbucketLogo.png");
-  constructor(public authService: AuthService) { }
+
+  get user(): Observable<firebase.User> {
+    return this.authService.user$
+  }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logout(): void {
+    this.authService.logout(()=> {
+      this.router.navigateByUrl('');
+    });
   }
 }
