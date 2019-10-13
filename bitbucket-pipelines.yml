@@ -12,11 +12,13 @@ pipelines:
             - npm install
             - npm run build-prod
           artifacts:
+            - blog.luciano.goncalves.dev/firebase.json
             - blog.luciano.goncalves.dev/dist/lgblog/**
       - step:
           name: Deploy  to Firebase
           deployment: production
           script: 
+            - cd blog.luciano.goncalves.dev
             - pipe: atlassian/firebase-deploy:0.3.4
               variables:
                 FIREBASE_TOKEN: $FIREBASE_TOKEN
