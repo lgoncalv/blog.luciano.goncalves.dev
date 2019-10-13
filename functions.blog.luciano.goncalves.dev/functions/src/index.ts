@@ -16,7 +16,7 @@ const main = express();
 main.use('/v1', app);
 main.use(bodyParser.json());
 
-const whitelist = ['http://localhost:4200']
+const whitelist = ['http://localhost:4200', 'https://blog.luciano.goncalves.dev']
 const corsOptions = {
     origin: (origin: any, callback: any) => {
         if (whitelist.indexOf(origin) !== -1) {
