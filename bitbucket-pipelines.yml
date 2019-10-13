@@ -10,6 +10,6 @@ pipelines:
           script:
             - cd blog.luciano.goncalves.dev
             - npm install
-            - ng build --prod
+            - npm run build-prod
           artifacts:
             - dist/lgblog/**
