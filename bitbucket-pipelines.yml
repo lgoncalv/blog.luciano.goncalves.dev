@@ -23,3 +23,13 @@ pipelines:
               variables:
                 FIREBASE_TOKEN: $FIREBASE_TOKEN
                 PROJECT_ID: $FIREBASE_PROJECT
+    release/api:
+      - step:
+          name: Deploy to firebase
+          deployment: production API
+          script:
+            - cd functions.blog.luciano.goncalves.dev
+            - pipe: atlassian/firebase-deploy:0.3.4
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
+                PROJECT_ID: $FIREBASE_PROJECT
