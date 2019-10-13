@@ -1,0 +1,9 @@
+<article *ngIf="post">
+    <section class="post-header">
+        <h2 itemprop="name headline">{{post.title}}</h2>
+        <time [attr.datetime]="post.publishedOn" itemprop="datePublished">{{post.publishedOn * 1000 | date}}</time>
+    </section>
+    <section class="post-content">
+        <markdown [data]="content"></markdown>
+    </section>
+</article>
