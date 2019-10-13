@@ -12,6 +12,7 @@ pipelines:
             - npm install
             - npm run build-prod
           artifacts:
+            - blog.luciano.goncalves.dev/firebase.json
             - blog.luciano.goncalves.dev/dist/lgblog/**
       - step:
           name: Deploy  to Firebase
