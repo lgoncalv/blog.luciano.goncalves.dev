@@ -103,4 +103,8 @@ export class PostEditComponent implements OnInit, OnChanges {
     }
   }
 
+  cancel(): void {
+    console.log('cancel');
+  }
+
 }
