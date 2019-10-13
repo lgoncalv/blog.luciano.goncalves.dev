@@ -1,0 +1,18 @@
+<div class="edit-form-container">
+    <form [formGroup]="postForm">
+        <mat-form-field>
+            <input matInput placeholder="Title" formControlName="title">
+        </mat-form-field>
+        <mat-form-field>
+            <textarea class="post-summary" matInput placeholder="Summary" formControlName="summary"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+            <textarea class="post-content" matInput placeholder="Content" formControlName="content"></textarea>
+        </mat-form-field>
+        <div class="button-bar">
+            <button mat-button color="warn" [disabled]="loading" (click)="cancel()">Cancel</button>
+            <button *ngIf="canPublish" mat-raised-button [disabled]="loading" (click)="saveAndPublishPost()">Save & Publish</button>
+            <button mat-raised-button color="primary" [disabled]="loading" (click)="savePost()">Save</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,12 @@
+<article>
+    <section class="post-header">
+        <h2 itemprop="name headline">
+            <a [routerLink]="postUrl">{{post.title}}</a>
+        </h2>
+        <time [attr.datetime]="post.publishedOn" itemprop="datePublished">{{post.publishedOn * 1000 | date: 'fullDate'}}</time>
+    </section>
+    <section class="post-content">
+        <markdown [data]="post.content"></markdown>
+    </section>
+</article>
+<mat-divider></mat-divider>

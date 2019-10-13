@@ -1,27 +1,37 @@
-# This is a sample build configuration for JavaScript.
-# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
-# Only use spaces to indent your .yml configuration.
-# -----
-# You can specify a custom docker image from Docker Hub as your build environment.
 image: node:10.15.3
 
 pipelines:
-  default:
-    - step:
-        name: Build
-        caches:
-          - node
-        script: # Modify the commands below to build your repository.
-          - cd blog.luciano.goncalves.dev
-          - npm install
-          - ng build --prod
-        artifacts:
-          - dist/lgblog/**
-    - step:
-        name: Deploy to Firebase
-        deployment: production
-        script:
-          - pipe: atlassian/firebase-deploy:0.3.4
-            variables:
-              FIREBASE_TOKEN: $FIREBASE_TOKEN
-              PROJECT_ID: $FIREBASE_PROJECT
+  branches:
+    release/frontend:
+      - step:
+          name: Build frontend
+          caches:
+            - node
+          script:
+            - cd blog.luciano.goncalves.dev
+            - npm install
+            - npm run build-prod
+          artifacts:
+            - blog.luciano.goncalves.dev/firebase.json
+            - blog.luciano.goncalves.dev/dist/lgblog/**
+      - step:
+          name: Deploy  to Firebase
+          deployment: production
+          script: 
+            - cd blog.luciano.goncalves.dev
+            - pipe: atlassian/firebase-deploy:0.3.4
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
+                PROJECT_ID: $FIREBASE_PROJECT
+    release/api:
+      - step:
+          name: Deploy to firebase
+          deployment: production API
+          script:
+            - cd functions.blog.luciano.goncalves.dev/functions
+            - npm install
+            - cd ..
+            - pipe: atlassian/firebase-deploy:0.3.4
+              variables:
+                FIREBASE_TOKEN: $FIREBASE_TOKEN
+                PROJECT_ID: $FIREBASE_PROJECT

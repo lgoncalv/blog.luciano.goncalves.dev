@@ -1,0 +1,32 @@
+.edit-form-container {
+  display: flex;
+  flex-direction: column;
+
+  form {
+    margin-top: 20px;
+
+    .post-summary {
+        height: 150px;
+    }
+
+    .post-content {
+        height: 300px;
+    }
+
+    .button-bar {
+        text-align: right;
+
+        button {
+          margin-left: 10px;
+        }
+    }
+  }
+
+  form>* {
+    width: 100%;
+  }
+}
+
+.edit-form-container>* {
+  width: 100%;
+}

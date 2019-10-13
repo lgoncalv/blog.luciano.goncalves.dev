@@ -1,0 +1,15 @@
+<div fxLayout="column" fxFlexFill>
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+        <div fxLayoutAlign="space-between center" class="nav-header">
+            <a [routerLink]="['/']">Luciano's blog</a>
+            <div>
+                <a *ngIf="!(user | async)?.uid" href="https://bitbucket.org/lgoncalv/lucianogoncalves"
+                    target="_blank">
+                    <img [src]="BITBUCKET_LOGO">
+                </a>
+                <button mat-button *ngIf="(authService.user$ | async)?.uid"
+                    (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </mat-toolbar>
+</div>

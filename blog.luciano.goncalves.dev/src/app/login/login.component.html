@@ -1,0 +1,35 @@
+<div fxFlexFill fxLayoutAlign="center center">
+    <mat-card fxFlex="50%">
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+            <mat-card-title>Login</mat-card-title>
+            <mat-card-content>
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Email" formControlName="email">
+                    <mat-error *ngIf="emailFormControl.errors?.email && !emailFormControl.errors?.required">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.errors?.required">
+                        Email is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="full-width">
+                    <input matInput placeholder="Password" type="password" formControlName="password">
+                    <mat-error *ngIf="passwordFormControl.errors?.required">
+                        Password is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div *ngIf="loginFailed">
+                    <mat-error>
+                        Failed to login, please check credentials
+                    </mat-error>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
