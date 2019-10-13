@@ -1,0 +1,15 @@
+image: node:10.15.3
+
+pipelines:
+  branches:
+    release/frontend:
+      - step:
+          name: Build frontend
+          caches:
+            - node
+          script:
+            - cd blog.luciano.goncalves.dev
+            - npm install
+            - ng build --prod
+          artifacts:
+            - dist/lgblog/**
