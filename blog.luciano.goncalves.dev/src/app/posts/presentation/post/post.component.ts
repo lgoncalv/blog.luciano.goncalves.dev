@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Post } from '../../post';
+import { Component, OnInit, Input } from '@angular/core';
+import { PostEdit } from '../../post';
 
 @Component({
   selector: 'lgblog-post',
@@ -7,18 +7,15 @@ import { Post } from '../../post';
   styleUrls: ['./post.component.scss']
 })
 export class PostComponent implements OnInit {
-  @Input() post: Post;
-  // post: Post;
+  @Input() post: PostEdit;
   
+  get content(): string {
+    return this.post.content 
+      ? this.post.content
+      : this.post.summary
+  }
   constructor() { }
 
   ngOnInit() {
   }
-
-  // ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
-  //   if (changes.selectedPost && changes.selectedPost.currentValue) {
-  //     this.post = changes.selectedPost.currentValue[;
-  //   }
-  // }
-
 }

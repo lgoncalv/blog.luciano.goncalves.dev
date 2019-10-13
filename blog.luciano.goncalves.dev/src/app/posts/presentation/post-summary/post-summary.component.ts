@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
-import { PostSummary } from '../../post-summary';
-import * as moment from 'moment';
+import { PostSummary } from '../../post';
 
 @Component({
   selector: 'lgblog-post-summary',
@@ -8,16 +7,12 @@ import * as moment from 'moment';
   styleUrls: ['./post-summary.component.scss'],
 
 })
-export class PostSummaryComponent implements OnInit {
+export class PostSummaryComponent {
   @Input() post: PostSummary;
 
   get postUrl(): string {
-    const createdOn = moment(this.post.createdOn * 1000);
-    return `${createdOn.format('YYYY/MM/DD')}/${this.post.slug}`;
+    return `post/${this.post.slug}`;
   }
 
   constructor() { }
-
-  ngOnInit() {
-  }
 }

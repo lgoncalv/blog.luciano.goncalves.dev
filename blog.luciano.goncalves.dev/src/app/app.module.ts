@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatDividerModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PostListPageComponent } from './posts/container/post-list-page/post-list-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,6 +23,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PostEditPageComponent } from './posts/container/post-edit-page/post-edit-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WildcardComponent } from './wildcard/wildcard.component';
+import { PostEditComponent } from './posts/presentation/post-edit/post-edit.component';
+import { AuthHeaderInterceptorProvider } from './auth/auth-header.interceptor';
+import { DraftListPageComponent } from './posts/container/draft-list-page/draft-list-page.component';
+import { DraftListComponent } from './posts/presentation/draft-list/draft-list.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,9 @@ import { WildcardComponent } from './wildcard/wildcard.component';
     PostEditPageComponent,
     NotFoundComponent,
     WildcardComponent,
+    PostEditComponent,
+    DraftListPageComponent,
+    DraftListComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +55,9 @@ import { WildcardComponent } from './wildcard/wildcard.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatDividerModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -56,6 +66,7 @@ import { WildcardComponent } from './wildcard/wildcard.component';
     MarkdownModule.forRoot()
   ],
   providers: [
+    AuthHeaderInterceptorProvider,
     HttpErrorInterceptorProvider
   ],
   bootstrap: [AppComponent]

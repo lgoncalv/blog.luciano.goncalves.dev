@@ -3,9 +3,10 @@
         <h2 itemprop="name headline">
             <a [routerLink]="postUrl">{{post.title}}</a>
         </h2>
-        <time [attr.datetime]="post.createdOn" itemprop="datePublished">{{post.createdOn | date: 'fullDate'}}</time>
+        <time [attr.datetime]="post.publishedOn" itemprop="datePublished">{{post.publishedOn * 1000 | date: 'fullDate'}}</time>
     </section>
     <section class="post-content">
-        <markdown [data]="post.summary"></markdown>
+        <markdown [data]="post.content"></markdown>
     </section>
 </article>
+<mat-divider></mat-divider>

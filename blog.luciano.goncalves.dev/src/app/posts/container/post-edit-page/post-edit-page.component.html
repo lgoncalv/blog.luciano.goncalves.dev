@@ -1,1 +1,5 @@
-<p>post-edit-page works!</p>
+<lgblog-post-edit
+    [selectedPost]="post"
+    [loading]="loading"
+    (savePostEvent)="savePost($event)">
+</lgblog-post-edit>

@@ -17,7 +17,8 @@ export const environment = {
     appId: "1:778842732551:web:bc6f24831a29d4d0da12a2"
   },
   constants: {
-    jwtTokenKey: "JwtToken"
+    jwtTokenKey: "JwtToken",
+    jwtTokenExpKey: "JwtTokenExp"
   }
 };
 

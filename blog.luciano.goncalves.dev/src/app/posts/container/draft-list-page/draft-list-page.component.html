@@ -1,0 +1,6 @@
+<lgblog-draft-list 
+    [drafts]="drafts$ | async"
+    (newPostEvent)="newPost()"
+    (editPostEvent)="editPost($event)">
+</lgblog-draft-list>
+<button (click)="newPost()" mat-fab color="primary"><mat-icon>add</mat-icon></button>

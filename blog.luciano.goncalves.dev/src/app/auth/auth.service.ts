@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: "root"
@@ -20,6 +20,7 @@ export class AuthService {
       .then(_ => {
         this._afAuth.auth.currentUser.getIdToken().then(token => {
           localStorage.setItem(environment.constants.jwtTokenKey, token);
+          localStorage.setItem(environment.constants.jwtTokenExpKey, moment().add(50, 'minutes').unix().toString())
         });
         next(true);
       })
