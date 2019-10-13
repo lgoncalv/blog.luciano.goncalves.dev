@@ -25,20 +25,12 @@ pipelines:
                 PROJECT_ID: $FIREBASE_PROJECT
     release/api:
       - step:
-          name: Build
-          script:
-            - cd functions.blog.luciano.goncalves.dev/functions
-            - npm install
-          artifacts:
-            - functions.blog.luciano.goncalves.dev/firebase.json
-            - functions.blog.luciano.goncalves.dev/functions/*.json
-            - functions.blog.luciano.goncalves.dev/functions/src/**
-            - functions.blog.luciano.goncalves.dev/functions/lib/**
-      - step:
           name: Deploy to firebase
           deployment: production API
           script:
-            - cd functions.blog.luciano.goncalves.dev
+            - cd functions.blog.luciano.goncalves.dev/functions
+            - npm install
+            - cd ..
             - pipe: atlassian/firebase-deploy:0.3.4
               variables:
                 FIREBASE_TOKEN: $FIREBASE_TOKEN
