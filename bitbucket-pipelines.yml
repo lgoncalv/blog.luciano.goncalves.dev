@@ -28,7 +28,9 @@ pipelines:
           name: Deploy to firebase
           deployment: production API
           script:
-            - cd functions.blog.luciano.goncalves.dev
+            - cd functions.blog.luciano.goncalves.dev/functions
+            - npm install
+            - cd ..
             - pipe: atlassian/firebase-deploy:0.3.4
               variables:
                 FIREBASE_TOKEN: $FIREBASE_TOKEN
