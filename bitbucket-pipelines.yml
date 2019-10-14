@@ -16,7 +16,7 @@ pipelines:
             - blog.luciano.goncalves.dev/dist/lgblog/**
       - step:
           name: Deploy  to Firebase
-          deployment: production
+          deployment: production blog
           script: 
             - cd blog.luciano.goncalves.dev
             - pipe: atlassian/firebase-deploy:0.3.4
