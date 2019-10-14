@@ -9,10 +9,5 @@ import * as moment from 'moment';
 export class AppComponent {
 
   constructor() {
-    console.log(`moment: ${moment()}`);
-    console.log(`unix: ${moment().unix()}`);
-    console.log(`offset: ${moment().utcOffset()}`);
-    console.log(`seconds: ${moment().seconds()}`);
-    console.log(`milliseconds: ${moment().milliseconds()}`);
   }
 }
