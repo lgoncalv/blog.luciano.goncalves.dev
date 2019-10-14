@@ -1,10 +1,18 @@
+@import "../variables";
+
 :host {
     .content{
-        max-width: 48rem;
-        padding-right: 2rem;
-        padding-left: 2rem;
+        max-width: 300px;
         margin-left: auto;
         margin-right: auto;
-        width: 100%;  
+        width: 100%;
+
+        @media #{$mat-gt-xs} {
+            max-width: 580px;
+          }
+
+        @media #{$mat-gt-sm} {
+            max-width: 768px;
+          }
     }
 }
