@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
+import { Router, NavigationEnd } from '@angular/router';
+declare let ga: Function;
 
 @Component({
   selector: 'lgblog-root',
@@ -8,6 +9,12 @@ import * as moment from 'moment';
 })
 export class AppComponent {
 
-  constructor() {
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        ga('set', 'page', event.urlAfterRedirects);
+        ga('send', 'pageview');
+      }
+    });
   }
 }
