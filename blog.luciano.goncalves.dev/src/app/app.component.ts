@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
+import { Router, NavigationEnd } from '@angular/router';
+declare let ga: Function;
 
 @Component({
   selector: 'lgblog-root',
@@ -8,11 +9,12 @@ import * as moment from 'moment';
 })
 export class AppComponent {
 
-  constructor() {
-    console.log(`moment: ${moment()}`);
-    console.log(`unix: ${moment().unix()}`);
-    console.log(`offset: ${moment().utcOffset()}`);
-    console.log(`seconds: ${moment().seconds()}`);
-    console.log(`milliseconds: ${moment().milliseconds()}`);
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        ga('set', 'page', event.urlAfterRedirects);
+        ga('send', 'pageview');
+      }
+    });
   }
 }
