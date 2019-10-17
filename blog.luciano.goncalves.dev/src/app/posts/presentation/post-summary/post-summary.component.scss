@@ -1,35 +1,32 @@
 article {
-    margin-top: 25px;
+  margin-top: 25px;
+  margin-bottom: 30px;
 
-    .post-header {
-        h2 {
-            margin-bottom: 0;
-            margin-top: 0;
-            font-size: 1.7em;
+  .post-header {
+    h2 {
+      margin-bottom: 0;
+      margin-top: 0;
+      font-size: 1.7em;
 
-            a {
-                text-decoration: none;
-                color: #000;
-            }
-        }
-        
-        time {
-            font-size: 1.0em;
-        }
+      a {
+        text-decoration: none;
+        color: #000;
+      }
     }
-    
-    .post-content {
-        margin-top: 20px;
-        font-size: 1.3em;
-        font-weight: 300;
-        line-height: 1.8;
-        
-        p {
-            margin: 20px 0 20px 0;
-        }
-    }
-}
 
-mat-divider {
-    margin-top: 30px;
+    time {
+      font-size: 1.0em;
+    }
+  }
+
+  .post-content {
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: 300;
+    line-height: 1.8;
+
+    p {
+      margin: 20px 0 20px 0;
+    }
+  }
 }
