@@ -23,10 +23,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
     private router: Router,
-    private loadingService: LoadingService) { }
+    private loadingService: LoadingService) {
+      this.loadingService.setIsLoading(true);
+  }
 
   ngOnInit() {
-    this.loadingService.setIsLoading(true);
     this.subscriptions.push(this.activatedRoute.params.subscribe(params => {
       this.subscriptions.push(this.postService.getPostBySlug(params.slug).subscribe(post => {
         this.post = post;

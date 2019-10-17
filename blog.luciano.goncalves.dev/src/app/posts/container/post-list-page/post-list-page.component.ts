@@ -14,10 +14,11 @@ export class PostListPageComponent implements OnInit, OnDestroy {
   postsSubscription: Subscription;
 
   constructor(private postService: PostService, 
-    private loadingService: LoadingService) { }
+    private loadingService: LoadingService) { 
+      this.loadingService.setIsLoading(true);
+    }
 
   ngOnInit() {
-    this.loadingService.setIsLoading(true);
     this.postsSubscription = this.postService.getPostSummaries().subscribe(posts => {
       this.posts = posts;
       this.loadingService.setIsLoading(false);
