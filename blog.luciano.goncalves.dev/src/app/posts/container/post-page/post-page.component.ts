@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PostEdit, PostView } from '../../post';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/auth/auth.service';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'lgblog-post-page',
@@ -21,13 +22,17 @@ export class PostPageComponent implements OnInit, OnDestroy {
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private loadingService: LoadingService) {
+      this.loadingService.setIsLoading(true);
+  }
 
   ngOnInit() {
     this.subscriptions.push(this.activatedRoute.params.subscribe(params => {
       this.subscriptions.push(this.postService.getPostBySlug(params.slug).subscribe(post => {
         this.post = post;
         this.titleService.setTitle(`LG's blog: ${this.post.title}`);
+        this.loadingService.setIsLoading(false);
       }))
     }, error => {
       console.log(`Error: ${error}`);

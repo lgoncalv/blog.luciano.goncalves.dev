@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatDividerModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatDividerModule, MatProgressBarModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PostListPageComponent } from './posts/container/post-list-page/post-list-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -58,6 +58,7 @@ import { DraftListComponent } from './posts/presentation/draft-list/draft-list.c
     MatIconModule,
     MatTableModule,
     MatDividerModule,
+    MatProgressBarModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
