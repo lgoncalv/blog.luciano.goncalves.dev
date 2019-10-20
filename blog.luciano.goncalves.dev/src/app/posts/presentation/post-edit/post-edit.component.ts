@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { PostEdit } from '../../post';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -8,7 +8,7 @@ import * as moment from 'moment';
   templateUrl: './post-edit.component.html',
   styleUrls: ['./post-edit.component.scss']
 })
-export class PostEditComponent implements OnInit, OnChanges {
+export class PostEditComponent implements OnChanges {
   @Input() selectedPost: PostEdit;
   @Input() loading: boolean;
   @Output() savePostEvent = new EventEmitter<PostEdit>();
@@ -27,10 +27,6 @@ export class PostEditComponent implements OnInit, OnChanges {
       summary: ['', [Validators.required]],
       content: [''] 
     });
-  }
-
-  ngOnInit() {
-    
   }
 
   ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
@@ -106,5 +102,4 @@ export class PostEditComponent implements OnInit, OnChanges {
   cancel(): void {
     console.log('cancel');
   }
-
 }
