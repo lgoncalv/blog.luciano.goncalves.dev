@@ -1,0 +1,62 @@
+@import '../../../variables';
+
+.drop-container {
+  position: relative;
+  background-color: #eee;
+  width: 100%;
+  text-align: center;
+  padding: 50px 0;
+
+  mat-icon {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+  }
+
+  span {
+    color: #999;
+    font-size: 18px;
+    font-weight: 300;
+  }
+}
+
+.image-list-container {
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  flex-direction: row;
+
+  .image-item {
+    position: relative;
+    margin: 5px;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+
+    img {
+      width: 100%;
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+    }
+
+    mat-progress-bar {
+      position: absolute;
+      bottom: 0;
+    }
+
+    mat-icon {
+        position: absolute;
+        cursor: pointer;
+        right: 5px;
+        top: 0;
+        &.copy {
+            right: 30px;
+        }
+        &.delete {
+            color: $warn;
+        }
+    }
+
+  }
+}

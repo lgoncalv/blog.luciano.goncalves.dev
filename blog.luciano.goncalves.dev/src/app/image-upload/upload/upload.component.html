@@ -1,0 +1,16 @@
+<div class="drop-container" lgblogDragAndDrop (files)="onFilesDropped($event)">
+    <mat-icon (click)="fileInput.click()" matTooltip="Select images to upload" matTooltipPosition="left">attach_file
+    </mat-icon>
+    <input hidden (change)="onFilesSelected()" #fileInput type="file" multiple id="file" accept="image/*">
+    <span>Drop images here to upload</span>
+</div>
+<div *ngIf="files" class="image-list-container">
+    <div *ngFor="let key of objectKeys(files)" class="image-item">
+        <img [src]="files[key].url" />
+        <mat-progress-bar mode="determinate" [value]="(files[key].uploadProgress | async)"></mat-progress-bar>
+        <div *ngIf="(files[key].downloadUrl | async) as downloadUrl" class="icons">
+            <mat-icon matTooltip="Copy image URL" class="copy" (click)="copyImageUrl(downloadUrl)">file_copy</mat-icon>
+            <mat-icon matTooltip="Delete image" class="delete" (click)="deleteImage(key)">delete</mat-icon>
+        </div>
+    </div>
+</div>
