@@ -1,3 +1,14 @@
+@import '~@angular/material/theming';
+
+$app-primary: mat-palette($mat-deep-purple);
+$app-accent: mat-palette($mat-amber);
+$app-warn: mat-palette($mat-red);
+
+$primary: mat-color($app-primary, 500);
+$accent: mat-color($app-accent, A200);
+$warn: mat-color($app-warn, 500);
+$standard: #e0e0e0;
+
 $mat-xs: "screen and (max-width: 599px)";
 $mat-sm: "screen and (min-width: 600px) and (max-width: 959px)";
 $mat-md: "screen and (min-width: 960px) and (max-width: 1279px)";
