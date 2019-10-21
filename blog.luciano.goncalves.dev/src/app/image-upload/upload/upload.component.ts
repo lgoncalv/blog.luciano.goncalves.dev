@@ -8,7 +8,10 @@ import { finalize } from 'rxjs/operators';
 @Component({
   selector: 'lgblog-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+  styleUrls: ['./upload.component.scss'],
+  host: {
+    "(window:paste)": "onFilePaste($event)"
+  }
 })
 export class UploadComponent implements OnDestroy {
   files: { [index: string]: FileHandle } = {};
@@ -38,12 +41,28 @@ export class UploadComponent implements OnDestroy {
     this.uploadFiles();
   }
 
+  onFilePaste(event: ClipboardEvent) {
+    if (
+      event.clipboardData &&
+      event.clipboardData.files &&
+      event.clipboardData.files.length &&
+      this.isImageFile(event.clipboardData.files[0])
+    ) {
+      this.prepareFiles([event.clipboardData.files[0]]);
+      this.uploadFiles();
+    }
+  }
+
+  private isImageFile(file: File): boolean {
+    return (file.type.search(/^image\//i) === 0);
+  }
+
   private prepareFiles(files: File[]) {
     for (let i = 0; i < files.length; i++) {
       const randomId = Math.random().toString(36).substring(2);
       const file = files[i];
       const url = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(file));
-      this.files[randomId] = { id: randomId, file, url };
+      this.files[randomId] = { id: randomId, file, url, uploaded: false };
     }
   }
 
@@ -52,13 +71,14 @@ export class UploadComponent implements OnDestroy {
       this.files[key].reference = this.afStorage.ref(key);
       this.files[key].task = this.files[key].reference.put(this.files[key].file);
       this.files[key].uploadProgress = this.files[key].task.percentageChanges();
-      this.subscriptions.push(this.files[key].task.snapshotChanges().pipe(finalize(() => 
-        this.files[key].downloadUrl = this.files[key].reference.getDownloadURL()))
-        .subscribe());
+      this.subscriptions.push(this.files[key].task.snapshotChanges().pipe(finalize(() => {
+        this.files[key].downloadUrl = this.files[key].reference.getDownloadURL();
+        this.files[key].uploaded = true;
+      })).subscribe());
     });
   }
 
-  deleteImage(key: string){
+  deleteImage(key: string) {
     this.subscriptions.push(this.files[key].reference.delete().subscribe(() => {
       delete this.files[key];
     }));

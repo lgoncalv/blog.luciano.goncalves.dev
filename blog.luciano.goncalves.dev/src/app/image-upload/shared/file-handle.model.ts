@@ -14,5 +14,6 @@ export interface FileHandle {
     url: SafeUrl,
     uploadProgress?: Observable<number>;
     downloadUrl?: Observable<string>;
+    uploaded?: boolean;
   }
   
