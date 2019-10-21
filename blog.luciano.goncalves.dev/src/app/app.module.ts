@@ -27,6 +27,7 @@ import { PostEditComponent } from './posts/presentation/post-edit/post-edit.comp
 import { AuthHeaderInterceptorProvider } from './auth/auth-header.interceptor';
 import { DraftListPageComponent } from './posts/container/draft-list-page/draft-list-page.component';
 import { DraftListComponent } from './posts/presentation/draft-list/draft-list.component';
+import { ImageUploadModule } from './image-upload/image-upload.module';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { DraftListComponent } from './posts/presentation/draft-list/draft-list.c
     FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ImageUploadModule,
   ],
   providers: [
     AuthHeaderInterceptorProvider,
