@@ -1,5 +1,9 @@
-<lgblog-post-edit
+<lgblog-post-edit *ngIf="!previewMode"
     [selectedPost]="post"
     [loading]="loading"
-    (savePostEvent)="savePost($event)">
+    (savePostEvent)="savePost($event)"
+    (previewEvent)="preview($event)">
 </lgblog-post-edit>
+<lgblog-post-preview *ngIf="previewMode"
+    [selectedPost]="post"
+    (cancelPreviewEvent)="cancelPreview()"></lgblog-post-preview>

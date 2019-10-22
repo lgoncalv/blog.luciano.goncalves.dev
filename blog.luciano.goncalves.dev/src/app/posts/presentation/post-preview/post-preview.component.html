@@ -1,0 +1,16 @@
+<article *ngIf="selectedPost">
+    <section class="post-header">
+        <h2 itemprop="name headline">{{selectedPost.title}}</h2>
+        <time [attr.datetime]="selectedPost.updatedOn" itemprop="datePublished">{{selectedPost.updatedOn * 1000 | date}}</time>
+    </section>
+    <section class="post-content">
+        <markdown [data]="selectedPost.summary"></markdown>
+    </section>
+    <mat-divider></mat-divider>
+    <section class="post-content">
+        <markdown [data]="selectedPost.content"></markdown>
+    </section>
+</article>
+<div class="button-bar">
+    <button mat-button color="warn" [disabled]="loading" (click)="cancelPreview()">Cancel</button>
+</div>
