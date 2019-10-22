@@ -14,7 +14,7 @@ export class AuthHeaderInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const tokenExpire = localStorage.getItem(environment.constants.jwtTokenKey);
+    const tokenExpire = localStorage.getItem(environment.constants.jwtTokenExpKey);
     const isExpired = moment().isAfter(moment.unix(+tokenExpire));
 
     if (!isExpired) {
