@@ -12,6 +12,7 @@ export class PostEditComponent implements OnChanges {
   @Input() selectedPost: PostEdit;
   @Input() loading: boolean;
   @Output() savePostEvent = new EventEmitter<PostEdit>();
+  @Output() previewEvent = new EventEmitter<PostEdit>();
   
   post: PostEdit;
   postForm: FormGroup;
@@ -101,5 +102,13 @@ export class PostEditComponent implements OnChanges {
 
   cancel(): void {
     console.log('cancel');
+  }
+
+  preview(): void {
+    this.post = {
+        ...this.post,
+        ...this.postForm.value
+    }
+    this.previewEvent.emit(this.post);
   }
 }

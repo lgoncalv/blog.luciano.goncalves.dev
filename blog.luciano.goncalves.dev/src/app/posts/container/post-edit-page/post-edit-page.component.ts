@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PostEdit } from '../../post';
 import { Constants } from 'src/app/constants';
+import * as moment from 'moment';
 
 @Component({
   selector: 'lgblog-post-edit-page',
@@ -15,6 +16,7 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   
   post: PostEdit;
+  previewMode = false;
   loading = true;
 
   constructor(private titleService: Title,
@@ -41,14 +43,6 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
     })
   }
 
-  private getTitle(): string {
-    if (this.post.id === 'new') {
-      return `${Constants.appTitle} - New post`;
-    } else {
-      return `${Constants.appTitle} - Edit post: ${this.post.title}`;
-    }
-  }
-
   savePost(post: PostEdit): void {
     this.loading = true;
     this.subscriptions.push(this.postService.savePost(post).subscribe(post => {
@@ -58,5 +52,23 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl(`/drafts`);
       }
     }));
+  }
+
+  preview(post: PostEdit): void {
+    this.post = post;
+    this.post.updatedOn = moment().unix();
+    this.previewMode = true;
+  }
+
+  cancelPreview(): void {
+    this.previewMode = false;
+  }
+
+  private getTitle(): string {
+    if (this.post.id === 'new') {
+      return `${Constants.appTitle} - New post`;
+    } else {
+      return `${Constants.appTitle} - Edit post: ${this.post.title}`;
+    }
   }
 }
