@@ -28,6 +28,7 @@ import { AuthHeaderInterceptorProvider } from './auth/auth-header.interceptor';
 import { DraftListPageComponent } from './posts/container/draft-list-page/draft-list-page.component';
 import { DraftListComponent } from './posts/presentation/draft-list/draft-list.component';
 import { ImageUploadModule } from './image-upload/image-upload.module';
+import { PostPreviewComponent } from './posts/presentation/post-preview/post-preview.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ImageUploadModule } from './image-upload/image-upload.module';
     PostEditComponent,
     DraftListPageComponent,
     DraftListComponent,
+    PostPreviewComponent,
   ],
   imports: [
     BrowserModule,
