@@ -5,7 +5,7 @@ import { Directive, Output, EventEmitter, HostBinding, HostListener } from '@ang
 })
 export class DragAndDropDirective {
   @Output() files: EventEmitter<File[]> = new EventEmitter();
-  @HostBinding("style.border") private border = "4px dashed #eee";
+  @HostBinding("style.border") border = "4px dashed #eee";
 
   constructor() { }
 
