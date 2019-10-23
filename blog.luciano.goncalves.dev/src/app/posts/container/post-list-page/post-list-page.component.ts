@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { PostService } from 'src/app/post.service';
 import { PostSummary } from '../../post';
 import { LoadingService } from 'src/app/loading.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'lgblog-post-list-page',
@@ -14,11 +15,13 @@ export class PostListPageComponent implements OnInit, OnDestroy {
   postsSubscription: Subscription;
 
   constructor(private postService: PostService, 
+    private titleService: Title,
     private loadingService: LoadingService) { 
       this.loadingService.setIsLoading(true);
     }
 
   ngOnInit() {
+    this.titleService.setTitle('LG\'s blog');
     this.postsSubscription = this.postService.getPostSummaries().subscribe(posts => {
       this.posts = posts;
       this.loadingService.setIsLoading(false);
