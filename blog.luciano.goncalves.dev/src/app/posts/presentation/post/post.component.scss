@@ -1,3 +1,7 @@
+::ng-deep img {
+    max-width: 100%;
+}
+
 :host {
     article {
         margin-top: 25px;
@@ -18,10 +22,6 @@
             font-size: 1.3em;
             font-weight: 300;
             line-height: 1.8;
-            
-            p {
-                margin: 20px 0 20px 0;
-            }
         }
     }
 }

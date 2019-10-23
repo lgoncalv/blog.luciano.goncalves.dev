@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PostSummary } from '../../post';
 
 @Component({
