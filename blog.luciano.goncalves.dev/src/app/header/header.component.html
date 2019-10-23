@@ -7,8 +7,12 @@
                     target="_blank">
                     <img [src]="BITBUCKET_LOGO">
                 </a>
-                <button mat-button *ngIf="(authService.user$ | async)?.uid"
-                    (click)="logout()">Logout</button>
+                <div *ngIf="(authService.user$ | async)?.uid">
+                    <button mat-button 
+                        (click)="drafts()">Drafts</button>
+                        <button mat-button
+                        (click)="logout()">Logout</button>
+                </div>
             </div>
         </div>
     </mat-toolbar>

@@ -25,4 +25,8 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('');
     });
   }
+
+  drafts() {
+    this.router.navigateByUrl('\drafts');
+  }
 }
