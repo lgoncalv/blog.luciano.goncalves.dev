@@ -153,6 +153,26 @@ app.get('/posts/:id', validateFirebaseIdToken, async (request, response) => {
     }
 });
 
+app.delete('/posts/:id', validateFirebaseIdToken, async (request, response) => {
+    try {
+        const id = request.params.id;
+        if (!id) throw new Error('Id is required');
+
+        db.collection('posts')
+            .doc(id)
+            .delete()
+            .then(_ => {
+                response.status(204).send();
+                
+            }).catch(error => {
+                throw error;
+            })
+    } catch (error) {
+        console.error(error);
+        response.status(500).send('Something went wrong :(');
+    }
+});
+
 app.get('/posts/slug/:slug', async (request, response) => {
     try {
         const slug = request.params.slug;

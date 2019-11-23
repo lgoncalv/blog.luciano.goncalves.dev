@@ -8,7 +8,10 @@ import { HeaderComponent } from './header/header.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { MatToolbarModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule, MatTableModule, MatDividerModule, MatProgressBarModule } from '@angular/material';
+import { MatToolbarModule, MatCardModule, MatFormFieldModule, 
+  MatInputModule, MatButtonModule, 
+  MatIconModule, MatTableModule, MatDividerModule, 
+  MatProgressBarModule, MatDialog, MatDialogModule } from '@angular/material';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PostListPageComponent } from './posts/container/post-list-page/post-list-page.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +32,7 @@ import { DraftListPageComponent } from './posts/container/draft-list-page/draft-
 import { DraftListComponent } from './posts/presentation/draft-list/draft-list.component';
 import { ImageUploadModule } from './image-upload/image-upload.module';
 import { PostPreviewComponent } from './posts/presentation/post-preview/post-preview.component';
+import { ConfirmPostDeleteDialogComponent } from './posts/presentation/confirm-post-delete-dialog/confirm-post-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,7 @@ import { PostPreviewComponent } from './posts/presentation/post-preview/post-pre
     DraftListPageComponent,
     DraftListComponent,
     PostPreviewComponent,
+    ConfirmPostDeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +67,7 @@ import { PostPreviewComponent } from './posts/presentation/post-preview/post-pre
     MatTableModule,
     MatDividerModule,
     MatProgressBarModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
@@ -74,6 +80,7 @@ import { PostPreviewComponent } from './posts/presentation/post-preview/post-pre
     AuthHeaderInterceptorProvider,
     HttpErrorInterceptorProvider
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ConfirmPostDeleteDialogComponent]
 })
 export class AppModule { }
