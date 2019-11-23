@@ -13,6 +13,7 @@ export class PostEditComponent implements OnChanges {
   @Input() loading: boolean;
   @Output() savePostEvent = new EventEmitter<PostEdit>();
   @Output() previewEvent = new EventEmitter<PostEdit>();
+  @Output() deletePostEvent = new EventEmitter<PostEdit>();
   
   post: PostEdit;
   postForm: FormGroup;
@@ -98,6 +99,10 @@ export class PostEditComponent implements OnChanges {
       }
       this.savePostEvent.emit(this.post);
     }
+  }
+
+  deletePost(): void {
+    this.deletePostEvent.emit(this.post);
   }
 
   cancel(): void {

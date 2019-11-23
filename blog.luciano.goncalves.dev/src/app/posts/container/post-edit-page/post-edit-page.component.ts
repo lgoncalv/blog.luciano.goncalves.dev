@@ -6,6 +6,8 @@ import { Subscription } from 'rxjs';
 import { PostEdit } from '../../post';
 import { Constants } from 'src/app/constants';
 import * as moment from 'moment';
+import { MatDialog } from '@angular/material';
+import { ConfirmPostDeleteDialogComponent } from '../../presentation/confirm-post-delete-dialog/confirm-post-delete-dialog.component';
 
 @Component({
   selector: 'lgblog-post-edit-page',
@@ -19,7 +21,8 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
   previewMode = false;
   loading = true;
 
-  constructor(private titleService: Title,
+  constructor(private _dialog: MatDialog,
+    private titleService: Title,
     private postService: PostService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -62,6 +65,22 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
 
   cancelPreview(): void {
     this.previewMode = false;
+  }
+
+  deletePost(post: PostEdit): void {
+    const dialogRef = this._dialog.open(ConfirmPostDeleteDialogComponent, {
+      width: '500px',
+      data: post
+    });
+
+    this.subscriptions.push(dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.subscriptions.push(this.postService.deletePost(post.id)
+          .subscribe(_ => {
+            this.router.navigateByUrl(`/drafts`);
+          }));
+      }
+    }));
   }
 
   private getTitle(): string {

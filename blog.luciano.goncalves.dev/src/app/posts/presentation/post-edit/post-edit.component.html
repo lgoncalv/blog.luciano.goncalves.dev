@@ -13,6 +13,7 @@
         <div class="button-bar">
             <button mat-button color="warn" [disabled]="loading" (click)="cancel()">Cancel</button>
             <button mat-button [disabled]="loading" (click)="preview()">Preview</button>
+            <button mat-raised-button color="warn" [disabled]="loading" (click)="deletePost()">Delete</button>
             <button *ngIf="canPublish" mat-raised-button [disabled]="loading" (click)="saveAndPublishPost()">Save & Publish</button>
             <button mat-raised-button color="primary" [disabled]="loading" (click)="savePost()">Save</button>
         </div>
