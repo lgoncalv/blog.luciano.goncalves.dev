@@ -49,6 +49,11 @@ export class PostService {
         }
     }
 
+    deletePost(postId: string): Observable<{}> {
+        return this.http.delete(`${this.apiUrl}/posts/${postId}`)
+            .pipe(tap(_ => console.log('post deleted')));
+    }
+
     private createPost(post: PostEdit): Observable<PostSaved> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         return this.http.post<PostSaved>(`${this.apiUrl}/posts`, post, { headers: headers })

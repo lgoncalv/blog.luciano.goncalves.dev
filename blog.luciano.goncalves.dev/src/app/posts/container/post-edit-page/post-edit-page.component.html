@@ -2,6 +2,7 @@
     [selectedPost]="post"
     [loading]="loading"
     (savePostEvent)="savePost($event)"
+    (deletePostEvent)="deletePost($event)"
     (previewEvent)="preview($event)">
 </lgblog-post-edit>
 <lgblog-post-preview *ngIf="previewMode"

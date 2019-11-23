@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+    <h2>Delete: {{data.title}}</h2>
+  <p>Are you sure you want to delete the post?</p>
+  <p *ngIf="data.published">This post was published on {{data.publishedOn | date}}</p>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">No</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Yes please</button>
+</div>
