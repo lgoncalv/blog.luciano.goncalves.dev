@@ -15,7 +15,8 @@ export class PostService {
     }
 
     getDrafts(): Observable<PostDraftSummary[]> {
-        return this.http.get<PostDraftSummary[]>(`${this.apiUrl}/posts/drafts`);
+        return this.http.get<PostDraftSummary[]>(`${this.apiUrl}/posts/drafts`)
+            .pipe(tap(posts => console.log(posts)));
     }
 
     getPostSummaries(): Observable<PostSummary[]> {
