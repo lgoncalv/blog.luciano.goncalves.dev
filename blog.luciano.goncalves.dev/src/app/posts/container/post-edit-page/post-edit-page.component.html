@@ -1,6 +1,6 @@
 <lgblog-post-edit *ngIf="!previewMode"
     [selectedPost]="post"
-    [loading]="loading"
+    [loading]="loading | async"
     (savePostEvent)="savePost($event)"
     (deletePostEvent)="deletePost($event)"
     (previewEvent)="preview($event)">
