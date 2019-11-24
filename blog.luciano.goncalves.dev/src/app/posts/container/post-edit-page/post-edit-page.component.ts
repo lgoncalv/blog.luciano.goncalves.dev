@@ -51,8 +51,6 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.postService.savePost(post).subscribe(post => {
       if (post.published) {
         this.router.navigateByUrl(`/post/${post.slug}`);
-      } else {
-        this.router.navigateByUrl(`/drafts`);
       }
     }));
   }
