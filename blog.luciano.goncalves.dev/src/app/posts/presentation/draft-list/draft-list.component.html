@@ -5,7 +5,7 @@
     </ng-container>
     <ng-container matColumnDef="createdOn">
         <mat-header-cell *matHeaderCellDef> Created on </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.createdOn | date}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.createdOn * 1000 | date}} </mat-cell>
     </ng-container>
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
