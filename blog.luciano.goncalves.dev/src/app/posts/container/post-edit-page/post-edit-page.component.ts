@@ -2,12 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { PostService } from 'src/app/post.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { PostEdit } from '../../post';
 import { Constants } from 'src/app/constants';
 import * as moment from 'moment';
 import { MatDialog } from '@angular/material';
 import { ConfirmPostDeleteDialogComponent } from '../../presentation/confirm-post-delete-dialog/confirm-post-delete-dialog.component';
+import { LoadingService } from 'src/app/loading.service';
 
 @Component({
   selector: 'lgblog-post-edit-page',
@@ -19,21 +20,24 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
   
   post: PostEdit;
   previewMode = false;
-  loading = true;
+  loading: Observable<boolean>;
 
   constructor(private _dialog: MatDialog,
     private titleService: Title,
     private postService: PostService,
     private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private loadingService: LoadingService) { }
 
   ngOnInit() {
+    this.loading = this.loadingService.isLoading();
     this.subscriptions.push(this.activatedRoute.params
       .subscribe(params => {
+        this.loadingService.setIsLoading(true);
         this.subscriptions.push(this.postService.getPostForEditById(params.id).subscribe(post => {
           this.post = post;
           this.titleService.setTitle(this.getTitle());
-          this.loading = false;
+          this.loadingService.setIsLoading(false);
         }))
       }));
   }
@@ -47,12 +51,11 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
   }
 
   savePost(post: PostEdit): void {
-    this.loading = true;
+    this.loadingService.setIsLoading(true);
     this.subscriptions.push(this.postService.savePost(post).subscribe(post => {
+      this.loadingService.setIsLoading(false);
       if (post.published) {
         this.router.navigateByUrl(`/post/${post.slug}`);
-      } else {
-        this.router.navigateByUrl(`/drafts`);
       }
     }));
   }
