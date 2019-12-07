@@ -44,6 +44,7 @@
               "./node_modules/prismjs/components/prism-json.min.js",
               "./node_modules/prismjs/components/prism-markdown.min.js",
               "./node_modules/prismjs/components/prism-nginx.min.js",
+              "./node_modules/prismjs/components/prism-powershell.min.js",
               "./node_modules/prismjs/components/prism-regex.min.js",
               "./node_modules/prismjs/components/prism-less.min.js",
               "./node_modules/prismjs/components/prism-scss.min.js",
