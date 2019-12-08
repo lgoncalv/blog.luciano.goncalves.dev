@@ -2,6 +2,7 @@
     [selectedPost]="post"
     [loading]="loading | async"
     (savePostEvent)="savePost($event)"
+    (cancelEvent)="cancel()"
     (deletePostEvent)="deletePost($event)"
     (previewEvent)="preview($event)">
 </lgblog-post-edit>
