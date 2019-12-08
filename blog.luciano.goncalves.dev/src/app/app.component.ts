@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LoadingService } from './loading.service';
 import { Subscription } from 'rxjs';
 import { Router, NavigationEnd } from '@angular/router';
+import { RoutingState } from './routing-state.service';
 declare let ga: Function;
 
 @Component({
@@ -14,8 +15,10 @@ export class AppComponent implements OnInit, OnDestroy {
   loadingSubscription: Subscription;
 
   constructor(private loadingService: LoadingService, 
-  		private router: Router) {
+      private router: Router,
+      routingState: RoutingState) {
         this.loading = false;
+        routingState.loadRouting();
         this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         ga('set', 'page', event.urlAfterRedirects);
