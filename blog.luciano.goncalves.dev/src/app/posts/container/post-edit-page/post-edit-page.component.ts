@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import { MatDialog } from '@angular/material';
 import { ConfirmPostDeleteDialogComponent } from '../../presentation/confirm-post-delete-dialog/confirm-post-delete-dialog.component';
 import { LoadingService } from 'src/app/loading.service';
+import { RoutingState } from 'src/app/routing-state.service';
 
 @Component({
   selector: 'lgblog-post-edit-page',
@@ -17,6 +18,7 @@ import { LoadingService } from 'src/app/loading.service';
 })
 export class PostEditPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
+  private previousRoute: string;
   
   post: PostEdit;
   previewMode = false;
@@ -27,10 +29,12 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
     private postService: PostService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private loadingService: LoadingService) { }
+    private loadingService: LoadingService,
+    private routingState: RoutingState) { }
 
   ngOnInit() {
     this.loading = this.loadingService.isLoading();
+    this.previousRoute = this.routingState.getPreviousUrl();
     this.subscriptions.push(this.activatedRoute.params
       .subscribe(params => {
         this.loadingService.setIsLoading(true);
@@ -68,6 +72,10 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
 
   cancelPreview(): void {
     this.previewMode = false;
+  }
+
+  cancel(): void {
+    this.router.navigateByUrl(this.previousRoute);
   }
 
   deletePost(post: PostEdit): void {
