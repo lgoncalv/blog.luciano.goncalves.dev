@@ -11,6 +11,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: 'blog.luciano.goncalves.dev'
 - task: WhiteSource Bolt@20
   inputs:
-    cwd: '/blog.luciano.goncalves.dev'
+    cwd: 'blog.luciano.goncalves.dev'
