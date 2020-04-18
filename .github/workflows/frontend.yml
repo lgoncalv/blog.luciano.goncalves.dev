@@ -2,9 +2,8 @@ name: CI
 
 on:
   push:
-    branches: 
-      - '*'
     paths:
+      - '.github/workflows/frontend.yml'
       - 'blog.luciano.goncalves.dev/**'
 
 jobs:
