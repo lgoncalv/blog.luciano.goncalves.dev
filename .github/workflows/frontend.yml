@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    branches: 
+      - '*'
     paths:
       - 'blog.luciano.goncalves.dev/**'
 
