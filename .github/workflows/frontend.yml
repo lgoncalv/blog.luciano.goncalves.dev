@@ -33,7 +33,7 @@ jobs:
       working-directory: ./blog.luciano.goncalves.dev
     - uses: actions/upload-artifact@v1
       with:
-        name: dist
+        name: lgblog
         path: './blog.luciano.goncalves.dev/dist/lgblog'
   deploy:
     needs: [build]
