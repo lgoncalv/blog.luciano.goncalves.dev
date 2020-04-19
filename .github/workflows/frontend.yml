@@ -11,7 +11,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    working-directory: ./blog.luciano.goncalves.dev
     env:
       FIREBASE_PROJECT: lucianogoncalves-blog
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
@@ -21,6 +20,7 @@ jobs:
       run: |
         npm install
         npm run build-prod
+      working-directory: ./blog.luciano.goncalves.dev
     - uses: actions/upload-artifact@v1
       with:
         name: dist
