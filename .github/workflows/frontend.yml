@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: 
-      - master
+      - '*'
     paths:
       - '.github/workflows/frontend.yml'
       - 'blog.luciano.goncalves.dev/**'
@@ -13,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: echo ${{github.ref}}
     - name: Cache node modules
       uses: actions/cache@v1
       env:
