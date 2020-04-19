@@ -37,8 +37,8 @@ jobs:
       with:
         name: dist
         path: './blog.luciano.goncalves.dev/dist/lgblog'
-        
   deploy:
+    needs: [build]
     runs-on: [ubuntu-latest]
     env:
       PROJECT_ID: lucianogoncalves-blog
