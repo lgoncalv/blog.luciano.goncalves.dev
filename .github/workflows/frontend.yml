@@ -21,7 +21,7 @@ jobs:
         cd blog.luciano.goncalves.dev
         npm install
         npm run build-prod
-    - uses: actions/upload-artifact@1
+    - uses: actions/upload-artifact@v1
       with:
         name: dist
         path: 'blog.luciano.goncalves.dev/dist/lgblog/**'
