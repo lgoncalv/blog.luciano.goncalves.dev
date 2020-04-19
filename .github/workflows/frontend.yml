@@ -55,7 +55,7 @@ jobs:
       - run: |
           pwd
           ls
-          cd dist/lgblog
+          cd dist
           pwd
           ls
       - name: Deploy to Firebase
