@@ -11,6 +11,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    working-directory: ./blog.luciano.goncalves.dev
     env:
       FIREBASE_PROJECT: lucianogoncalves-blog
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
@@ -18,7 +19,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Run a multi-line script
       run: |
-        cd blog.luciano.goncalves.dev
         npm install
         npm run build-prod
     - uses: actions/upload-artifact@v1
