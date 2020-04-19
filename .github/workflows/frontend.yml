@@ -34,9 +34,9 @@ jobs:
       run: |
         npm run build-prod
         cd dist/lgblog
-        ls
+        pwd
       working-directory: ./blog.luciano.goncalves.dev
     - uses: actions/upload-artifact@v1
       with:
         name: dist
-        path: './dist/lgblog/*'
+        path: './blog.luciano.goncalves.dev/dist/lgblog/*'
