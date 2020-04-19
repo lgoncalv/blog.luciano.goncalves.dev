@@ -49,6 +49,7 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: dist
+          path: ./blog.luciano.goncalves.dev
       - run: |
           pwd
           ls
