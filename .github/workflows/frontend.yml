@@ -2,6 +2,8 @@ name: CI
 
 on:
   push:
+    branches: 
+      - master
     paths:
       - '.github/workflows/frontend.yml'
       - 'blog.luciano.goncalves.dev/**'
@@ -9,6 +11,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_PROJECT: lucianogoncalves-blog
+      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     steps:
     - uses: actions/checkout@v2
     - name: Run a multi-line script
@@ -16,3 +21,7 @@ jobs:
         cd blog.luciano.goncalves.dev
         npm install
         npm run build-prod
+    - uses: actions/upload-artifacts@1
+      with:
+        name: dist
+        path: 'blog.luciano.goncalves.dev/dist/lgblog/**'
