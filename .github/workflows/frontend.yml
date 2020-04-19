@@ -29,10 +29,7 @@ jobs:
       run: npm install
       working-directory: ./blog.luciano.goncalves.dev
     - name: Run a multi-line script
-      run: |
-        npm run build-prod
-        cd dist/lgblog
-        pwd
+      run: npm run build-prod
       working-directory: ./blog.luciano.goncalves.dev
     - uses: actions/upload-artifact@v1
       with:
@@ -50,12 +47,10 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v1
         with:
-          name: dist
-          #path: ./blog.luciano.goncalves.dev
+          name: lgblog
+          path: ./blog.luciano.goncalves.dev/dist
       - run: |
-          pwd
-          ls
-          cd dist
+          cd blog.luciano.goncalves.dev/dist
           pwd
           ls
       - name: Deploy to Firebase
