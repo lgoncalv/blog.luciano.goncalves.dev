@@ -33,10 +33,10 @@ jobs:
     - name: Run a multi-line script
       run: |
         npm run build-prod
-        cd dist
+        cd dist/lgblog
         ls
       working-directory: ./blog.luciano.goncalves.dev
     - uses: actions/upload-artifact@v1
       with:
         name: dist
-        path: './blog.luciano.goncalves.dev/dist/lgblog/**'
+        path: './dist/lgblog/*'
