@@ -45,15 +45,14 @@ jobs:
     env:
       PROJECT_ID: lucianogoncalves-blog
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      PROJECT_PATH: './blog.luciano.goncalves.dev/blog.luciano.goncalves.dev'
+      PROJECT_PATH: './blog.luciano.goncalves.dev'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v1
         with:
           name: dist
-          path: ./blog.luciano.goncalves.dev
+          path: ./blog.luciano.goncalves.dev/blog.luciano.goncalves.dev
       - run: |
-          cd ./blog.luciano.goncalves.dev
           pwd
           ls
       - name: Deploy to Firebase
