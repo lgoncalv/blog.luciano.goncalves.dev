@@ -50,7 +50,6 @@ jobs:
         with:
           name: dist
       - run: |
-          cd blog.luciano.goncalves.dev
           pwd
           ls
       - name: Deploy to Firebase
