@@ -51,8 +51,11 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: dist
-          path: ./blog.luciano.goncalves.dev/blog.luciano.goncalves.dev
+          #path: ./blog.luciano.goncalves.dev
       - run: |
+          pwd
+          ls
+          cd blog.luciano.goncalves.dev
           pwd
           ls
       - name: Deploy to Firebase
