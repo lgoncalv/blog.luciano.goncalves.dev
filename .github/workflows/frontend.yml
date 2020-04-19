@@ -40,7 +40,7 @@ jobs:
   deploy:
     needs: [build]
     runs-on: [ubuntu-latest]
-    if: github.ref == 'ref/head/master'
+    if: github.ref == 'ref/heads/master'
     env:
       PROJECT_ID: lucianogoncalves-blog
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
