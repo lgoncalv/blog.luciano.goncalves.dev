@@ -43,6 +43,7 @@ jobs:
     env:
       PROJECT_ID: lucianogoncalves-blog
       FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      PROJECT_PATH: './blog.luciano.goncalves.dev'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v1
