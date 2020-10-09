@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public BITBUCKET_LOGO = require("./assets/BitbucketLogo.png");
+  public LOGO = require("./assets/GitHub-Mark-Light-32px.png");
 
   get user(): Observable<firebase.User> {
     return this.authService.user$

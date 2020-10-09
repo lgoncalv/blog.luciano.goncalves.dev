@@ -3,9 +3,9 @@
         <div fxLayoutAlign="space-between center" class="nav-header">
             <a [routerLink]="['/']">Luciano's blog</a>
             <div>
-                <a *ngIf="!(user | async)?.uid" href="https://bitbucket.org/lgoncalv/lucianogoncalves"
+                <a *ngIf="!(user | async)?.uid" href="https://github.com/lgoncalv/blog.luciano.goncalves.dev"
                     target="_blank">
-                    <img [src]="BITBUCKET_LOGO">
+                    <img [src]="LOGO">
                 </a>
                 <div *ngIf="(authService.user$ | async)?.uid">
                     <button mat-button 
