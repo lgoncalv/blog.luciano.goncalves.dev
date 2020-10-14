@@ -223,7 +223,9 @@ app.put('/posts', validateFirebaseIdToken, async (request, response) => {
 
                 if (currentPost.published !== post.published) {
                     updatedPost.published = post.published;
-                    updatedPost.publishedOn = post.publishedOn ? admin.firestore.Timestamp.fromMillis(moment.unix(<number>post.publishedOn).utc().valueOf()) : currentPost.publishedOn;
+                    updatedPost.publishedOn = post.publishedOn 
+                        ? admin.firestore.Timestamp.fromMillis(moment.unix(<number>post.publishedOn).utc().valueOf()) 
+                        : currentPost.publishedOn;
                 }
 
                 if (currentPost.content !== post.content && post.content) {
@@ -232,7 +234,8 @@ app.put('/posts', validateFirebaseIdToken, async (request, response) => {
 
                 if (currentPost.title !== post.title) {
                     updatedPost.title = post.title;
-                    updatedPost.slug = slugify(post.title);
+                    if (!currentPost.published)
+                        updatedPost.slug = slugify(post.title);
                 }
 
                 if (currentPost.summary !== post.summary && post.summary) {
