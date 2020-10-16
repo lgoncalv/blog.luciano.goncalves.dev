@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy, AfterViewInit {
   private return: string;
   private subscriptions: Subscription[] = [];
   loginForm: FormGroup;
@@ -26,7 +26,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private authService: AuthService) {
+    private authService: AuthService,
+    private renderer: Renderer2) {
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.renderer.selectRootElement('#inputEmail').focus();
+    }, 100);
   }
 
   ngOnInit() {
