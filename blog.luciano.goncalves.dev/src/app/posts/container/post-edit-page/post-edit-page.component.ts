@@ -16,7 +16,7 @@ import { RoutingState } from 'src/app/routing-state.service';
   templateUrl: './post-edit-page.component.html',
   styleUrls: ['./post-edit-page.component.scss']
 })
-export class PostEditPageComponent implements OnInit, OnDestroy {
+export class PostEditPageComponent implements OnDestroy {
   private subscriptions: Subscription[] = [];
   private previousRoute: string;
   private formDirty: boolean = false;
@@ -31,21 +31,19 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
-    private routingState: RoutingState) { }
-
-  ngOnInit() {
-    this.loading = this.loadingService.isLoading();
-    this.previousRoute = this.routingState.getPreviousUrl();
-    this.subscriptions.push(this.activatedRoute.params
-      .subscribe(params => {
-        this.loadingService.setIsLoading(true);
-        this.subscriptions.push(this.postService.getPostForEditById(params.id).subscribe(post => {
-          this.post = post;
-          this.titleService.setTitle(this.getTitle());
-          this.loadingService.setIsLoading(false);
-        }))
-      }));
-  }
+    private routingState: RoutingState) { 
+      this.loading = this.loadingService.isLoading();
+      this.previousRoute = this.routingState.getPreviousUrl();
+      this.subscriptions.push(this.activatedRoute.params
+        .subscribe(params => {
+          this.loadingService.setIsLoading(true);
+          this.subscriptions.push(this.postService.getPostForEditById(params.id).subscribe(post => {
+            this.post = post;
+            this.titleService.setTitle(this.getTitle());
+            this.loadingService.setIsLoading(false);
+          }))
+        }));
+    }
 
   get isFormDirty(): boolean {
     return this.formDirty;
