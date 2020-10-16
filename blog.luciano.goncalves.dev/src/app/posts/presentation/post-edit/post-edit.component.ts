@@ -1,34 +1,44 @@
-import { Component, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
 import { PostEdit } from '../../post';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'lgblog-post-edit',
   templateUrl: './post-edit.component.html',
   styleUrls: ['./post-edit.component.scss']
 })
-export class PostEditComponent implements OnChanges {
+export class PostEditComponent implements OnInit, OnChanges, OnDestroy {
   @Input() selectedPost: PostEdit;
   @Input() loading: boolean;
   @Output() savePostEvent = new EventEmitter<PostEdit>();
   @Output() previewEvent = new EventEmitter<PostEdit>();
   @Output() deletePostEvent = new EventEmitter<PostEdit>();
   @Output() cancelEvent = new EventEmitter();
+  @Output() formDirtyEvent = new EventEmitter<boolean>();
   
   post: PostEdit;
   postForm: FormGroup;
+
+  private formStatusChangeSubscription: Subscription;
 
   get canPublish(): boolean {
     return this.post ? !this.post.published : false;
   }
 
   constructor(private fb: FormBuilder) { 
-    console.log('Initialize form');
     this.postForm = this.fb.group({
       title: ['', [Validators.required]],
       summary: ['', [Validators.required]],
       content: [''] 
+    });
+  }
+  ngOnInit(): void {
+    this.formStatusChangeSubscription = this.postForm.valueChanges.subscribe(() => {
+      if (this.postForm.dirty) {
+        this.formDirtyEvent.emit(true);
+      }
     });
   }
 
@@ -44,16 +54,19 @@ export class PostEditComponent implements OnChanges {
     }
   }
 
+  ngOnDestroy(): void {
+    if (this.formStatusChangeSubscription)
+      this.formStatusChangeSubscription.unsubscribe();
+  }
+
   private displayPost(post: PostEdit): void {
     this.post = { ...post };
-    console.log('display post');
-    console.log(this.post);
     this.postForm.patchValue({
       title: post.title,
       summary: post.summary,
       content: post.content
     });
-    
+    this.formDirtyEvent.emit(false);
   }
 
   private disableForm(): void {
