@@ -8,6 +8,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WildcardComponent } from './wildcard/wildcard.component';
 import { DraftListPageComponent } from './posts/container/draft-list-page/draft-list-page.component';
+import { PostEditPageGuardGuard } from './posts/post-edit-page-guard.guard';
 
 
 const routes: Routes = [
@@ -15,7 +16,7 @@ const routes: Routes = [
   { path: 'drafts', component: DraftListPageComponent, canActivate: [AuthGuard] },
   { path: 'post/:slug', component: PostPageComponent },
   { path: 'admin/login', component: LoginComponent },
-  { path: 'post/:id/edit', component: PostEditPageComponent, canActivate: [AuthGuard] },
+  { path: 'post/:id/edit', component: PostEditPageComponent, canActivate: [AuthGuard], canDeactivate: [PostEditPageGuardGuard] },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', component: WildcardComponent }
 ];

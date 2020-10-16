@@ -19,6 +19,7 @@ import { RoutingState } from 'src/app/routing-state.service';
 export class PostEditPageComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
   private previousRoute: string;
+  private formDirty: boolean = false;
   
   post: PostEdit;
   previewMode = false;
@@ -46,6 +47,10 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
       }));
   }
 
+  get isFormDirty(): boolean {
+    return this.formDirty;
+  }  
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => {
       if (subscription) {
@@ -58,6 +63,7 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
     this.loadingService.setIsLoading(true);
     this.subscriptions.push(this.postService.savePost(post).subscribe(post => {
       this.loadingService.setIsLoading(false);
+      this.setFormDirty(false);
       if (post.published) {
         this.router.navigateByUrl(`/post/${post.slug}`);
       }
@@ -92,6 +98,10 @@ export class PostEditPageComponent implements OnInit, OnDestroy {
           }));
       }
     }));
+  }
+
+  setFormDirty(formDirty: boolean): void {
+    this.formDirty = formDirty;
   }
 
   private getTitle(): string {

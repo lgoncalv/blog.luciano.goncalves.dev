@@ -4,7 +4,8 @@
     (savePostEvent)="savePost($event)"
     (cancelEvent)="cancel()"
     (deletePostEvent)="deletePost($event)"
-    (previewEvent)="preview($event)">
+    (previewEvent)="preview($event)"
+    (formDirtyEvent)="setFormDirty($event)">
 </lgblog-post-edit>
 <lgblog-post-preview *ngIf="previewMode"
     [selectedPost]="post"
