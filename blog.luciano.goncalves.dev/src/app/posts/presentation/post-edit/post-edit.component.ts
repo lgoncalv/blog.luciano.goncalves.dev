@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, OnChanges, Output, EventEmitter, OnInit, OnDestroy, Renderer2, AfterViewInit } from '@angular/core';
 import { PostEdit } from '../../post';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './post-edit.component.html',
   styleUrls: ['./post-edit.component.scss']
 })
-export class PostEditComponent implements OnInit, OnChanges, OnDestroy {
+export class PostEditComponent implements OnInit, OnChanges, OnDestroy, AfterViewInit {
   @Input() selectedPost: PostEdit;
   @Input() loading: boolean;
   @Output() savePostEvent = new EventEmitter<PostEdit>();
@@ -27,13 +27,21 @@ export class PostEditComponent implements OnInit, OnChanges, OnDestroy {
     return this.post ? !this.post.published : false;
   }
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,
+    private renderer: Renderer2) { 
     this.postForm = this.fb.group({
       title: ['', [Validators.required]],
       summary: ['', [Validators.required]],
       content: [''] 
     });
   }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      this.renderer.selectRootElement('#inputTitle').focus();
+    }, 100);
+  }
+
   ngOnInit(): void {
     this.formStatusChangeSubscription = this.postForm.valueChanges.subscribe(() => {
       if (this.postForm.dirty) {

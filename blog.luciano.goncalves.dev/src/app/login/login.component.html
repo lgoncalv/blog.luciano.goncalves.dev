@@ -4,7 +4,7 @@
             <mat-card-title>Login</mat-card-title>
             <mat-card-content>
                 <mat-form-field class="full-width">
-                    <input matInput placeholder="Email" formControlName="email">
+                    <input matInput placeholder="Email" formControlName="email" id="inputEmail">
                     <mat-error *ngIf="emailFormControl.errors?.email && !emailFormControl.errors?.required">
                         Please enter a valid email address
                     </mat-error>
