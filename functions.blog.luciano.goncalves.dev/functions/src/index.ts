@@ -85,7 +85,8 @@ app.get('/posts', async (request, response) => {
                         title: post.get('title'),
                         slug: post.get('slug'),
                         content: post.get('summary'),
-                        publishedOn: post.get('publishedOn').seconds
+                        publishedOn: post.get('publishedOn').seconds,
+                        readMore: post.get('content') ? true : false
                     })
                 })
                 response.status(200).json(posts);
