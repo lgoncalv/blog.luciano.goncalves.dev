@@ -31,7 +31,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.activatedRoute.params.subscribe(params => {
       this.subscriptions.push(this.postService.getPostBySlug(params.slug).subscribe(post => {
         this.post = post;
-        this.titleService.setTitle(`LG's blog: ${this.post.title}`);
+        this.titleService.setTitle(`Luciano's blog: ${this.post.title}`);
         this.loadingService.setIsLoading(false);
       }))
     }, error => {
