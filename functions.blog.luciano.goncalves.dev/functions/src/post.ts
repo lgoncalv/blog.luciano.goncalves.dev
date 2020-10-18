@@ -17,6 +17,7 @@ export interface PostSummary {
     title: string;
     content: string;
     slug: string;
+    readMore: boolean;
 }
 
 export interface PostDraftSummary {
