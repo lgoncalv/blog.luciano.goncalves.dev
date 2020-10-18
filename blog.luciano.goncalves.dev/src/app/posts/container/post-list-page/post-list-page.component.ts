@@ -21,7 +21,7 @@ export class PostListPageComponent implements OnInit, OnDestroy {
     }
 
   ngOnInit() {
-    this.titleService.setTitle('LG\'s blog');
+    this.titleService.setTitle('Luciano\'s blog');
     this.postsSubscription = this.postService.getPostSummaries().subscribe(posts => {
       this.posts = posts;
       this.loadingService.setIsLoading(false);
