@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material';
 import { ConfirmPostDeleteDialogComponent } from '../../presentation/confirm-post-delete-dialog/confirm-post-delete-dialog.component';
 import { LoadingService } from 'src/app/loading.service';
 import { RoutingState } from 'src/app/routing-state.service';
+import { FaviconService } from 'src/app/favicon.service';
 
 @Component({
   selector: 'lgblog-post-edit-page',
@@ -31,7 +32,8 @@ export class PostEditPageComponent implements OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private loadingService: LoadingService,
-    private routingState: RoutingState) { 
+    private routingState: RoutingState,
+    private faviconService: FaviconService) { 
       this.loading = this.loadingService.isLoading();
       this.previousRoute = this.routingState.getPreviousUrl();
       this.subscriptions.push(this.activatedRoute.params
@@ -100,6 +102,7 @@ export class PostEditPageComponent implements OnDestroy {
 
   setFormDirty(formDirty: boolean): void {
     this.formDirty = formDirty;
+    this.faviconService.update(formDirty);
   }
 
   private getTitle(): string {
