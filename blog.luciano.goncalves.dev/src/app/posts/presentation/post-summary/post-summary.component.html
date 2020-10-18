@@ -8,5 +8,8 @@
     <section class="post-content">
         <markdown [data]="post.content"></markdown>
     </section>
+    <section class="post-footer" *ngIf="post.readMore">
+        <a mat-button [routerLink]="postUrl">Read more</a>
+    </section>
 </article>
 <mat-divider></mat-divider>
