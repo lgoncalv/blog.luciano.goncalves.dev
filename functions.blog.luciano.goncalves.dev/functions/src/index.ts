@@ -244,7 +244,7 @@ app.put('/posts', validateFirebaseIdToken, async (request, response) => {
                 }
 
                 db.collection('posts').doc(post.id!)
-                    .update(updatedPost)
+                    .update(updatedPost as admin.firestore.UpdateData<Post>)
                     .then(() => {
                         response.status(200).send({
                             published: updatedPost.published,
