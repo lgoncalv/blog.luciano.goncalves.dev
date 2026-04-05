@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PROJECT_ID: lucianogoncalves-blog
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
       PROJECT_PATH: ./functions.blog.luciano.goncalves.dev
     steps:
     - uses: actions/checkout@v4
