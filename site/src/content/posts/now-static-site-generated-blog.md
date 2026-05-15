@@ -21,7 +21,7 @@ There were a couple of follow-ups with style fixes and a problem with the base U
 
 ## Structure
 
-```
+```bash
 site/                  # Astro project
 ├── src/
 │   ├── content/
