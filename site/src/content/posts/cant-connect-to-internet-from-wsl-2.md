@@ -4,7 +4,7 @@ publishedOn: 2020-05-22
 updatedOn: 2020-10-09
 ---
 
-Seems to be pretty common, check below what worked for me, found it [here](https://github.com/microsoft/WSL/issues/4275#issuecomment-632596425)
+Seems to be pretty common, check below what worked for me, found it in [this WSL GitHub issue comment](https://github.com/microsoft/WSL/issues/4275#issuecomment-632596425)
 
 From `cmd` execute
 ``` cmd
