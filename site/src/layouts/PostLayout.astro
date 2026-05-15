@@ -1,0 +1,36 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  publishedOn: Date;
+  updatedOn?: Date;
+  slug: string;
+  headingLevel?: 'h1' | 'h2';
+}
+
+const { title, publishedOn, updatedOn, slug, headingLevel = 'h1' } = Astro.props;
+const Heading = headingLevel;
+
+const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+const iso = (d: Date) => d.toISOString().split('T')[0];
+---
+
+<BaseLayout title={`Luciano's blog — ${title}`}>
+  <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+    <section class="post-header">
+      <Heading itemprop="name headline">
+        <a href={`/post/${slug}`}>{title}</a>
+      </Heading>
+      <time datetime={iso(publishedOn)} itemprop="datePublished">{fmt(publishedOn)}</time>
+      {updatedOn && (
+        <span class="post-updated">
+          updated <time datetime={iso(updatedOn)} itemprop="dateModified">{fmt(updatedOn)}</time>
+        </span>
+      )}
+    </section>
+    <section class="post-content" itemprop="articleBody">
+      <slot />
+    </section>
+  </article>
+</BaseLayout>

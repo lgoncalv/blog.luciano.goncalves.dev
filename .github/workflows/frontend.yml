@@ -1,58 +1,60 @@
-name: CI
+name: Deploy site to GitHub Pages
 
 on:
   push:
-    branches: 
-      - '*'
+    branches:
+      - master
     paths:
       - '.github/workflows/frontend.yml'
-      - 'blog.luciano.goncalves.dev/**'
+      - 'site/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Cache node modules
-      uses: actions/cache@v4
-      env:
-        cache-name: cache-node-modules
-      with:
-        path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-        key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-build-${{ env.cache-name }}-
-          ${{ runner.os }}-build-
-          ${{ runner.os }}-
-    - name: Install Dependencies
-      run: npm install
-      working-directory: ./blog.luciano.goncalves.dev
-    - name: Run a multi-line script
-      run: npm run build-prod
-      working-directory: ./blog.luciano.goncalves.dev
-    - uses: actions/upload-artifact@v4
-      with:
-        name: dist
-        path: './blog.luciano.goncalves.dev/dist/lgblog'
-  deploy:
-    needs: [build]
-    runs-on: [ubuntu-latest]
-    if: github.ref == 'refs/heads/master'
-    env:
-      PROJECT_ID: lucianogoncalves-blog
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      PROJECT_PATH: 'blog.luciano.goncalves.dev'
-    steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          name: dist
-          path: ./blog.luciano.goncalves.dev/dist/lgblog
-      - run: |
-          cd blog.luciano.goncalves.dev/dist
-          pwd
-          ls
-      - name: Deploy to Firebase
-        uses: w9jds/firebase-action@master
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./site
+
+      - name: Build
+        run: npm run build
+        working-directory: ./site
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          args: deploy --only hosting
+          path: ./site/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

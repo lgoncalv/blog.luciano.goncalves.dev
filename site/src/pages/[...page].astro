@@ -1,0 +1,64 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+export async function getStaticPaths({ paginate }: { paginate: Function }) {
+  const posts = (await getCollection('posts')).sort(
+    (a, b) => b.data.publishedOn.valueOf() - a.data.publishedOn.valueOf()
+  );
+  return paginate(posts, { pageSize: 50 });
+}
+
+const { page } = Astro.props;
+const posts = page.data;
+---
+
+<BaseLayout title={page.currentPage === 1 ? "Luciano's blog" : `Luciano's blog — page ${page.currentPage}`}>
+  {await Promise.all(posts.map(async (post: any, index: number) => {
+    const { Content } = await render(post);
+    const formattedDate = post.data.publishedOn.toLocaleDateString('en-GB', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+    const isoDate = post.data.publishedOn.toISOString().split('T')[0];
+
+    return (
+      <>
+        <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
+          <section class="post-header">
+            <h2 itemprop="name headline">
+              <a href={`/post/${post.id}`}>{post.data.title}</a>
+            </h2>
+            <time datetime={isoDate} itemprop="datePublished">{formattedDate}</time>
+            {post.data.updatedOn && (
+              <span class="post-updated">
+                updated <time datetime={post.data.updatedOn.toISOString().split('T')[0]} itemprop="dateModified">
+                  {post.data.updatedOn.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+              </span>
+            )}
+          </section>
+          <section class="post-content" itemprop="articleBody">
+            <Content />
+          </section>
+        </article>
+        {index < posts.length - 1 && <hr class="post-divider" />}
+      </>
+    );
+  }))}
+
+  {(page.url.prev || page.url.next) && (
+    <nav class="pagination" aria-label="Pagination">
+      {page.url.prev
+        ? <a href={page.url.prev} class="pagination-link">&larr; Newer posts</a>
+        : <span />
+      }
+      <span class="pagination-info">Page {page.currentPage} of {page.lastPage}</span>
+      {page.url.next
+        ? <a href={page.url.next} class="pagination-link">Older posts &rarr;</a>
+        : <span />
+      }
+    </nav>
+  )}
+</BaseLayout>
