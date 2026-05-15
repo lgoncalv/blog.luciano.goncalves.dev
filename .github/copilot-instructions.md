@@ -2,11 +2,7 @@
 
 ## Repository structure
 
-This is a monorepo. The active site lives in `site/`. The old Angular app and Firebase Functions are archived in their original folders.
-
 - `site/` — Astro static site (the live blog)
-- `blog.luciano.goncalves.dev/` — legacy Angular 8 app (archived)
-- `functions.blog.luciano.goncalves.dev/` — legacy Firebase Cloud Functions (archived)
 
 ## Commands
 
@@ -40,7 +36,7 @@ npm run preview  # preview the production build locally
 | `/404` | `src/pages/404.astro` |
 
 ### Layouts
-- `BaseLayout.astro` — html shell, header, GA snippet, global CSS
+- `BaseLayout.astro` — html shell, header, global CSS
 - `PostLayout.astro` — wraps BaseLayout with post title/date header
 
 ## Key conventions
