@@ -13,7 +13,10 @@ const { page } = Astro.props;
 const posts = page.data;
 ---
 
-<BaseLayout title={page.currentPage === 1 ? "Luciano's blog" : `Luciano's blog — page ${page.currentPage}`}>
+<BaseLayout
+  title={page.currentPage === 1 ? "Luciano's blog" : `Luciano's blog — page ${page.currentPage}`}
+  description={page.currentPage === 1 ? "Luciano's personal blog — posts about software engineering, Azure, and web development." : undefined}
+>
   {await Promise.all(posts.map(async (post: any, index: number) => {
     const { Content } = await render(post);
     const formattedDate = post.data.publishedOn.toLocaleDateString('en-GB', {

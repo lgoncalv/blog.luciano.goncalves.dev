@@ -1,6 +1,7 @@
 ---
 title: "Azure Service Fabric in production"
 publishedOn: 2020-02-04
+description: "A couple of things we had to do to deploy and maintain our Service Fabric cluster in Azure"
 ---
 
 It's been a while since we deployed our first project to a Service Fabric cluster at work.
@@ -35,7 +36,7 @@ Service Fabric will never download or remove images not related to an applicatio
 
 * *ContainerImagesToSkip* will prevent the deletion of the listed images
 
-More info about this settings can be found [here](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-fabric-settings#hosting) and [here](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-get-started-containers.md). This is how the settings look like on the template.
+More info about this settings can be found in the [Service Fabric hosting settings docs](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-fabric-settings#hosting) and the [Service Fabric containers getting started guide](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-fabric/service-fabric-get-started-containers.md). This is how the settings look like on the template.
 
 
 ```json
@@ -88,7 +89,7 @@ And that's all you need to do actually, just add it to the cluster settings on y
 }
 ```
 
-You can read a bit more about the behaviour of changing default services during application upgrades [here](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade#upgrade-default-services).
+You can read a bit more about the behaviour of changing default services during application upgrades in the [Service Fabric application upgrade docs](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-upgrade#upgrade-default-services).
 
 
 ### Security

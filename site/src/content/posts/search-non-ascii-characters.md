@@ -2,6 +2,7 @@
 title: "Search Non-ASCII characters"
 publishedOn: 2019-10-23
 updatedOn: 2019-10-24
+description: "How to search for non-ASCII characters in your code using regular expressions"
 ---
 
 I can't remember where I got this one, but here it is:

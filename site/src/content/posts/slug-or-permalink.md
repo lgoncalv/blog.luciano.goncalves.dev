@@ -2,9 +2,10 @@
 title: "Slug or Permalink"
 publishedOn: 2019-10-15
 updatedOn: 2019-10-16
+description: "What is a slug and how to create one from a blog post title"
 ---
 
-Turns out what I call permalink is actually called *Slug*, permalink is the full URL and slug is "the part of a URL that identifies a page in human-readable keywords" you can read more about [here](https://en.wikipedia.org/wiki/Clean_URL#Slug) and [here](https://en.wikipedia.org/wiki/Permalink).
+Turns out what I call permalink is actually called *Slug*, permalink is the full URL and slug is "the part of a URL that identifies a page in human-readable keywords" you can read more about on [Wikipedia's Clean URL / Slug article](https://en.wikipedia.org/wiki/Clean_URL#Slug) and [Wikipedia's Permalink article](https://en.wikipedia.org/wiki/Permalink).
 
 Below is the function I used to Slugify blog titles, got it from [Matt Hagemann](https://gist.github.com/hagemann), this is the link to the [gist](https://gist.github.com/hagemann/382adfc57adbd5af078dc93feef01fe1).
 

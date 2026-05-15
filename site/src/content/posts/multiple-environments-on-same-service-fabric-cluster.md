@@ -2,6 +2,7 @@
 title: "Multiple environments on same Service Fabric Cluster"
 publishedOn: 2020-10-09
 updatedOn: 2020-10-18
+description: "How to deploy the same application type multiple times on the same Service Fabric cluster, to act like multiple environments"
 ---
 
 When developing a service on [Azure Service Fabric](https://azure.microsoft.com/en-us/services/service-fabric/) you can work on your local cluster, it works quite well. You can decide between 1 or 5 node local cluster (check [how to prepare your development environment](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started) from Microsoft docs). But if you are part of a team, you probably want everyone on the team to access the cluster. In our team, we have deployed a cluster in Azure for this, we called it `dev` environment, but then you have the QA team that needs to test, but this environment is too volatile for that, one minute is fine and the next is gone after we deployed something that broke the application. We needed an `staging` environment but we didn't want to deploy another cluster (you need to pay for it and all that). 
@@ -65,7 +66,7 @@ When picking static ports remember this:
 
 > "*By design static ports should not overlap with application port range specified in the ClusterManifest. If you specify a static port, assign it outside of application port range, otherwise it will result in port conflicts*" *([Specify resources in a service manifest](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources#endpoints))*.
 
-To use the port from your parameters file in your service, you can add a `ResourceOverride` section in the `ApplicationManifest` as indicated [here](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources#overriding-endpoints-in-servicemanifestxml). Locate the `ServiceManifestImport` of the service you want to override the endpoint port and add the `ResourceOverride` section.
+To use the port from your parameters file in your service, you can add a `ResourceOverride` section in the `ApplicationManifest` as indicated in the [Service Fabric endpoint override docs](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources#overriding-endpoints-in-servicemanifestxml). Locate the `ServiceManifestImport` of the service you want to override the endpoint port and add the `ResourceOverride` section.
 
 ```xml
 <ResourceOverrides>
