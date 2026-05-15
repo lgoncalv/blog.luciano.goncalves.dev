@@ -20,7 +20,7 @@ const iso = (d: Date) => d.toISOString().split('T')[0];
   <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
     <section class="post-header">
       <Heading itemprop="name headline">
-        <a href={`/post/${slug}`}>{title}</a>
+        <a href={`${import.meta.env.BASE_URL}post/${slug}`}>{title}</a>
       </Heading>
       <time datetime={iso(publishedOn)} itemprop="datePublished">{fmt(publishedOn)}</time>
       {updatedOn && (

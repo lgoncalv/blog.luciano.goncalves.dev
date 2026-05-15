@@ -28,7 +28,7 @@ const posts = page.data;
         <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
           <section class="post-header">
             <h2 itemprop="name headline">
-              <a href={`/post/${post.id}`}>{post.data.title}</a>
+              <a href={`${import.meta.env.BASE_URL}post/${post.id}`}>{post.data.title}</a>
             </h2>
             <time datetime={isoDate} itemprop="datePublished">{formattedDate}</time>
             {post.data.updatedOn && (

@@ -5,7 +5,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+const base = import.meta.env.BASE_URL;
+const canonicalUrl = Astro.url.href;
 ---
 
 <!doctype html>
@@ -16,13 +17,13 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
+    <link rel="stylesheet" href={`${base}styles/global.css`} />
   </head>
   <body>
     <header class="site-header">
       <nav>
-        <a href="/">Luciano's blog</a>
+        <a href={base}>Luciano's blog</a>
         <a
           class="github-link"
           href="https://github.com/lgoncalv/blog.luciano.goncalves.dev"
@@ -30,7 +31,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
           rel="noopener noreferrer"
           aria-label="GitHub repository"
         >
-          <img src="/github-mark-light-32px.png" width="32" height="32" alt="GitHub" />
+          <img src={`${base}github-mark-light-32px.png`} width="32" height="32" alt="GitHub" />
         </a>
       </nav>
     </header>
