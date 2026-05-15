@@ -1,6 +1,7 @@
 ---
 title: "Now Static Site Generation (SSG)"
 publishedOn: 2026-05-15
+description: "How I switched from an Angular CSR to a new Astro SSG website with GitHub Pages hosting and Umami analytics, all in a couple of hours with AI assistance"
 ---
 
 Ok, I ditched the old Angular CSR website for this new static site generated website. It's so easy now with AI that it took me maybe a couple of hours to get it all live with GitHub Copilot. The prompt was something like:

@@ -2,6 +2,7 @@
 title: "Can't connect to internet from WSL 2?"
 publishedOn: 2020-05-22
 updatedOn: 2020-10-09
+description: "If you are using WSL 2 and can't connect to the internet, here is what worked for me to fix it"
 ---
 
 Seems to be pretty common, check below what worked for me, found it in [this WSL GitHub issue comment](https://github.com/microsoft/WSL/issues/4275#issuecomment-632596425)

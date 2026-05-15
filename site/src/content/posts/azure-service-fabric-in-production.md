@@ -1,6 +1,7 @@
 ---
 title: "Azure Service Fabric in production"
 publishedOn: 2020-02-04
+description: "A couple of things we had to do to deploy and maintain our Service Fabric cluster in Azure"
 ---
 
 It's been a while since we deployed our first project to a Service Fabric cluster at work.
