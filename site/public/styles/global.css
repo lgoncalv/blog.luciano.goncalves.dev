@@ -101,7 +101,11 @@ article.post .post-content img {
 .post-divider {
   border: none;
   border-top: 1px solid var(--color-border);
-  margin: 0 -16px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
 }
 
 /* ── Inline code ───────────────────────────────────────────── */
