@@ -17,7 +17,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month:
 const iso = (d: Date) => d.toISOString().split('T')[0];
 ---
 
-<BaseLayout title={`Luciano's blog — ${title}`} description={description}>
+<BaseLayout title={`Luciano's blog — ${title}`} description={description} type="article" publishedOn={publishedOn} updatedOn={updatedOn}>
   <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
     <section class="post-header">
       <Heading itemprop="name headline">
