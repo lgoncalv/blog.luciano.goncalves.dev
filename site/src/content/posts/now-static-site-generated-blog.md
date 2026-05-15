@@ -14,7 +14,7 @@ There were a couple of follow-ups with style fixes and a problem with the base U
 ## Stack
 
 - **[Astro](https://astro.build/)** — static site generator
-- **GitHub Actions** — builds and deploys on every push to `master`
+- **GitHub Actions** — builds and deploys on every push to `main`
 - **GitHub Pages** — hosting, served via custom domain
 - **[Umami](https://umami.is/)** — privacy-focused analytics
 
@@ -40,7 +40,7 @@ site/                  # Astro project
    publishedOn: YYYY-MM-DD
    ---
    ```
-2. Push to `master` — GitHub Actions builds and deploys automatically.
+2. Push to `main` — GitHub Actions builds and deploys automatically.
 
 To draft a post without publishing it, place the file in `src/content/drafts/` instead.
 
