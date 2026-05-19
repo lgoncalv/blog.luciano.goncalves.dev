@@ -59,5 +59,22 @@ const siteName = "Luciano's blog";
       <slot />
     </main>
 
+    <script>
+      import mermaid from 'mermaid';
+
+      mermaid.initialize({ startOnLoad: false, theme: 'neutral' });
+
+      const blocks = document.querySelectorAll('pre[data-language="mermaid"] code');
+      for (const block of blocks) {
+        const pre = block.parentElement!;
+        const text = [...block.querySelectorAll('.line')].map(l => l.textContent).join('\n') || (block.textContent ?? '');
+        const id = `mermaid-${Math.random().toString(36).slice(2, 9)}`;
+        mermaid.render(id, text).then(({ svg }) => {
+          pre.outerHTML = `<div class="mermaid-container">${svg}</div>`;
+        }).catch(() => {
+          // leave the original code block on render failure
+        });
+      }
+    </script>
   </body>
 </html>
