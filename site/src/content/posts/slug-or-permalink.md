@@ -2,7 +2,7 @@
 title: "Slug or Permalink"
 publishedOn: 2019-10-15
 updatedOn: 2019-10-16
-description: "What is a slug and how to create one from a blog post title. Turns out what most people call a permalink is actually a slug — the human-readable part of a URL. Includes a JavaScript slugify function."
+description: "What is a slug vs a permalink? A slug is the human-readable part of a URL. Includes a JavaScript slugify function to generate slugs from blog post titles."
 ---
 
 Turns out what I call permalink is actually called *Slug*, permalink is the full URL and slug is "the part of a URL that identifies a page in human-readable keywords" you can read more about on [Wikipedia's Clean URL / Slug article](https://en.wikipedia.org/wiki/Clean_URL#Slug) and [Wikipedia's Permalink article](https://en.wikipedia.org/wiki/Permalink).
