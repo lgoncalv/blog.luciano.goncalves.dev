@@ -1,5 +1,5 @@
 ---
-title: "Multiple environments on the same Service Fabric cluster"
+title: "Multiple environments on Service Fabric"
 publishedOn: 2020-10-09
 updatedOn: 2020-10-18
 description: "How to deploy the same application type multiple times on the same Service Fabric cluster, to act like multiple environments"
