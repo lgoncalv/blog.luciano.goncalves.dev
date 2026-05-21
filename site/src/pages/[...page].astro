@@ -14,9 +14,10 @@ const posts = page.data;
 ---
 
 <BaseLayout
-  title={page.currentPage === 1 ? "Luciano's blog" : `Luciano's blog — page ${page.currentPage}`}
+  title={page.currentPage === 1 ? "Luciano's blog — Software engineering and web development" : `Luciano's blog — page ${page.currentPage}`}
   description={page.currentPage === 1 ? "Luciano's personal blog — posts about software engineering, Azure, and web development." : undefined}
 >
+  {page.currentPage === 1 && <h1 class="visually-hidden">Luciano's blog</h1>}
   {await Promise.all(posts.map(async (post: any, index: number) => {
     const { Content } = await render(post);
     const formattedDate = post.data.publishedOn.toLocaleDateString('en-GB', {
