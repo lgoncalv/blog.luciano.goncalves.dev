@@ -1,7 +1,7 @@
 ---
 title: "Wikidata dumps and Neo4j"
 publishedOn: 2026-05-18
-description: "Wikidata dumps contain all the info you need. They are huge files compressed in bz2 format. They recommend using JSON dumps, but they also have XML dumps. I've downloaded the latest JSON one, it's 94.2GB, and the good thing is that each line is a JSON object, so it's easy to stream and process."
+description: "Wikidata dumps are huge bz2 files — the JSON dump is 94.2 GB. Each line is a JSON object, making it easy to stream and process into a local graph database."
 ---
 
 Wikidata dumps contain all the info you need. They are huge files compressed in bz2 format. They recommend using JSON dumps, but they also have XML dumps. I've downloaded the latest JSON one, it's 94.2GB, and the good thing is that each line is a JSON object, so it's easy to stream and process.

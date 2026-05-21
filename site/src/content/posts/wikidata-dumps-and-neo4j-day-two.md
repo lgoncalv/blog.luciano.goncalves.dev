@@ -1,7 +1,7 @@
 ---
 title: "Wikidata dumps and Neo4j - Day 2"
 publishedOn: 2026-05-19
-description: "Continuing with the Wikidata dump and Neo4j setup. Overnight, we went from 16 million nodes and 56 million relationships to 38.5 million nodes and 84.5 million relationships. I'm watching disk space closely; I've used 25%, so I have 144 GB left."
+description: "Continuing the Wikidata and Neo4j import. Overnight: 16M nodes → 38.5M and 56M → 84.5M relationships. Watching disk space carefully with 144 GB remaining."
 ---
 
 I'll keep talking about the Wikidata dump and my setup. Overnight, we went from 16 million nodes and 56 million relationships ([See yesterday's post](/post/wikidata-dumps-and-neo4j)) to 38.5 million nodes and 84.5 million relationships. I'm watching disk space closely; I've used 25%, so I have 144 GB left.
