@@ -13,4 +13,4 @@ I can't remember where I got this one, but here it is:
 
 Just be sure to search using regular expressions.
 
-![Visual Studio Code regular expression search](./search-non-ascii-characters.png)
+![Visual Studio Code regular expression search](./search-non-ascii-characters.webp)
