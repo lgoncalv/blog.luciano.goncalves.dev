@@ -8,6 +8,7 @@ Okay, not much to update. I had a couple of problems with the script: I noticed 
 
 Some updated numbers:
 
+* Currently on line `47553093` of the wikidata dump file
 * `53.5` million nodes
 * `218` million relationships
 * `7k` messages behind in the nodes topic
