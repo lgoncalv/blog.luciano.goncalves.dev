@@ -16,6 +16,7 @@ const posts = page.data;
 <BaseLayout
   title={page.currentPage === 1 ? "Luciano's blog — Software engineering and web development" : `Luciano's blog — page ${page.currentPage}`}
   description={page.currentPage === 1 ? "Luciano's personal blog — posts about software engineering, Azure, and web development." : undefined}
+  enablePostListShortcuts={true}
 >
   {page.currentPage === 1 && <h1 class="visually-hidden">Luciano's blog</h1>}
   {await Promise.all(posts.map(async (post: any, index: number) => {
