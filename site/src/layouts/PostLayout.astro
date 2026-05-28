@@ -8,16 +8,26 @@ interface Props {
   updatedOn?: Date;
   slug: string;
   headingLevel?: 'h1' | 'h2';
+  previousPostUrl?: string;
+  nextPostUrl?: string;
 }
 
-const { title, description, publishedOn, updatedOn, slug, headingLevel = 'h1' } = Astro.props;
+const { title, description, publishedOn, updatedOn, slug, headingLevel = 'h1', previousPostUrl, nextPostUrl } = Astro.props;
 const Heading = headingLevel;
 
 const fmt = (d: Date) => d.toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
 const iso = (d: Date) => d.toISOString().split('T')[0];
 ---
 
-<BaseLayout title={`Luciano's blog — ${title}`} description={description} type="article" publishedOn={publishedOn} updatedOn={updatedOn}>
+<BaseLayout
+  title={`Luciano's blog — ${title}`}
+  description={description}
+  type="article"
+  publishedOn={publishedOn}
+  updatedOn={updatedOn}
+  previousPostUrl={previousPostUrl}
+  nextPostUrl={nextPostUrl}
+>
   <article class="post" itemscope itemtype="https://schema.org/BlogPosting">
     <section class="post-header">
       <Heading itemprop="name headline">
