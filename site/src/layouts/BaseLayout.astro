@@ -22,14 +22,18 @@ const siteName = "Luciano's blog";
     {description && <meta name="description" content={description} />}
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/x-icon" href={`${base}favicon.ico`} />
-    <link rel="stylesheet" href={`${base}styles/global.css`} />
     <script is:inline>
       (() => {
-        const stored = localStorage.getItem('theme');
-        const dark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
-        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        try {
+          const stored = localStorage.getItem('theme');
+          const dark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+        } catch {
+          document.documentElement.dataset.theme = 'light';
+        }
       })();
     </script>
+    <link rel="stylesheet" href={`${base}styles/global.css`} />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="5027eb92-ec33-4e41-a40c-a944a2dc66d7"></script>
 
     <!-- Open Graph -->
@@ -50,19 +54,18 @@ const siteName = "Luciano's blog";
     <header class="site-header">
       <nav>
         <a href={base}>Luciano's blog</a>
-        <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-          <span class="theme-icon-light">☀️</span>
-          <span class="theme-icon-dark">🌙</span>
-        </button>
-        <a
-          class="github-link"
-          href="https://github.com/lgoncalv/blog.luciano.goncalves.dev"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="GitHub repository"
-        >
-          <img src={`${base}github-mark-light-32px.png`} width="32" height="32" alt="GitHub" />
-        </a>
+        <div class="nav-right">
+          <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
+          <a
+            class="github-link"
+            href="https://github.com/lgoncalv/blog.luciano.goncalves.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub repository"
+          >
+            <img src={`${base}github-mark-light-32px.png`} width="32" height="32" alt="GitHub" />
+          </a>
+        </div>
       </nav>
     </header>
 
