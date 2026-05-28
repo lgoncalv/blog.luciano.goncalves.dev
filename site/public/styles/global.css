@@ -11,6 +11,19 @@
   --max-width: 1024px;
 }
 
+/* ── Dark mode ─────────────────────────────────────────── */
+[data-theme="dark"] {
+  --color-primary: #7986cb;
+  --color-primary-dark: #5c6bc0;
+  --color-text: #e0e0e0;
+  --color-text-light: #aaa;
+  --color-border: #444;
+  --color-code-bg: #2d2d2d;
+  --color-code-text: #e0e0e0;
+  background: #1a1a1a;
+  color-scheme: dark;
+}
+
 /* ── Reset & base ──────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -25,6 +38,26 @@ html, body {
 a { color: inherit; }
 
 img { max-width: 100%; }
+
+/* ── Theme toggle button ──────────────────────────────────── */
+#theme-toggle {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  line-height: 1;
+  color: #fff;
+}
+
+#theme-toggle:hover {
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.1);
+}
+
+[data-theme="light"] .theme-icon-dark { display: none; }
+[data-theme="dark"]  .theme-icon-light { display: none; }
 
 /* ── Site header ───────────────────────────────────────────── */
 .site-header {
