@@ -14,5 +14,3 @@ Fixing duplicate edges was a long process, but it is now mostly done. All messag
 I'm not in a hurry to remove these edges because all applications are already ignoring duplicates. I'm trying to find a way to avoid blocking the database during cleanup, since I still want to run import jobs and other queries. I'll probably write a worker that keeps running and removes edges in batches.
 
 I think the next step toward proper synchronization with `wikidata` is removing nodes that were deleted from `wikidata`. I'll keep you updated!
-
-```cypher
