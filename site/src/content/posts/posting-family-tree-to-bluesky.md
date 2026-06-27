@@ -114,7 +114,7 @@ CALL {
     RETURN collect({ person: person, relations: relations }) AS partners
 }
 
-/* ---------------- Siblings, excluding ego's parents ---------------- */
+/* ---------------- Siblings ---------------- */
 CALL {
     WITH ego
     OPTIONAL MATCH (ego)-[:FATHER|MOTHER]->(p:Human)
@@ -161,7 +161,7 @@ So now creating one of these threads is just a matter of finding the person's Wi
 
 The next step might be turning this into a Bluesky bot. Someone could mention the Cronologia account with something like:
 
-```text
+```bash
 @cronologia.bsky.social family tree person_name
 ```
 
