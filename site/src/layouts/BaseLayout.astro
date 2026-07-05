@@ -22,6 +22,30 @@ const {
 } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const canonicalUrl = Astro.url.href.replace(/\.html$/, '').replace(/\/index$/, '/');
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://blog.luciano.goncalves.dev/#person",
+      "name": "Luciano Goncalves",
+      "url": "https://blog.luciano.goncalves.dev",
+      "sameAs": [
+        "https://bsky.app/profile/lucianogoncalves.bsky.social",
+        "https://github.com/lgoncalv"
+      ]
+    },
+    ...(type === 'article' && publishedOn ? [{
+      "@type": "BlogPosting",
+      "@id": `${canonicalUrl}#blogposting`,
+      "headline": title,
+      "url": canonicalUrl,
+      "author": { "@id": "https://blog.luciano.goncalves.dev/#person" },
+      "datePublished": publishedOn.toISOString(),
+      "dateModified": (updatedOn || publishedOn).toISOString()
+    }] : [])
+  ]
+};
 const siteName = "Luciano Goncalves's blog";
 ---
 
@@ -64,12 +88,13 @@ const siteName = "Luciano Goncalves's blog";
     {description && <meta name="twitter:description" content={description} />}
     <meta name="twitter:site" content="@lucianogoncalves.bsky.social" />
     <meta name="twitter:creator" content="@lucianogoncalves.bsky.social" />
-  </head>
-
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
     <!-- Author -->
     <meta name="author" content="Luciano Goncalves" />
     <meta property="og:profile:first_name" content="Luciano" />
     <meta property="og:profile:last_name" content="Goncalves" />
+  </head>
   <body
     data-enable-post-list-shortcuts={enablePostListShortcuts ? 'true' : 'false'}
     data-previous-post-url={previousPostUrl}
