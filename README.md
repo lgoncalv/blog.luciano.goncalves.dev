@@ -35,6 +35,10 @@ site/                  # Astro project
 
 To draft a post without publishing it, place the file in `src/content/drafts/` instead.
 
+## Reviewing a post with Codex
+
+The repository includes the `review-post` skill in `.agents/skills/review-post/`. After cloning the repository, start Codex in the repository and invoke `$review-post`; the repository skill is discovered automatically. It offers the three most recently modified posts and drafts, or you can name a file to review directly.
+
 ## Local development
 
 ```bash
